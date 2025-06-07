@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #222222ec;
+    color: #fff;
+}
+
+
+.btn-info-dark:hover {
+  background-color: #0d6efd ; /* un azul más oscuro */
+  color: white ;
+}
+
+.login-wrapper {
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: 'American Typewriter';
+  src: url('/src/American Typewriter Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.american-typewriter {
+  font-family: 'American Typewriter', serif;
+}
+
+.background-bluedark{
+  background-color: blue;
+  color: #fff;
+}

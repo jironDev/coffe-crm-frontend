@@ -172,8 +172,8 @@
 
 // export default Customers;
 
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   getAllCustomers,
@@ -195,7 +195,7 @@ const Customers: React.FC = () => {
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();

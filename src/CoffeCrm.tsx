@@ -19,6 +19,7 @@ import CustomerForm from './pages/CustomerForm';
 import Sales from './pages/Sales';
 import SaleForm from './pages/SaleForm';
 import CustomerDetail from './pages/CustomerDetail';
+import { Navigate } from 'react-router-dom';
 
 export const CoffeCrm = () => {
   return (
@@ -26,6 +27,9 @@ export const CoffeCrm = () => {
       <AuthProvider>
         <Navbar />
         <Routes>
+         <Route path="/" element={<Navigate to="/login" replace />} />
+
+
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute />}>
             {/* <Route path="/" element={<Home />} /> */}

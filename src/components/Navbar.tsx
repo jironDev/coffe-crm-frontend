@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import CoffeLogo from '../assets/CoffeLogo.png';
 
 export const Navbar = () => {
   const { token, role, logout } = useAuth();
@@ -9,7 +10,7 @@ export const Navbar = () => {
       <div className="container-fluid">
         <Link className="navbar-brand" to="/customers">
           <img
-            src="/CoffeLogo.png"
+            src={CoffeLogo}
             alt="Coffee CRM Logo"
             width={40}
 

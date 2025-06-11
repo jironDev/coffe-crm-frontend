@@ -316,13 +316,20 @@ const Customers: React.FC = () => {
                     <td>{c.phone}</td>
                     <td>{c.customerType}</td>
                     <td className="text-center">
-                      <button
+                      {/* <button
                         className="btn btn-outline-light border-0"
-                        onClick={() => window.open(`/customers/view/${c.id}`, '_blank')}
+                        // onClick={() => window.open(`/customers/view/${c.id}`, '_blank')}
+                        
                         title="Ver detalles"
                       >
                         <InfoIcon/>
-                      </button>
+                      </button> */}
+
+              <a href={`/customers/view/${c.id}`} target="_blank" rel="noopener noreferrer">
+ <InfoIcon/>
+</a>
+
+
                     </td>
                   </tr>
                 ))}

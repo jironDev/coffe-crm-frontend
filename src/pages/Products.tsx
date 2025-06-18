@@ -345,9 +345,24 @@ const Products: React.FC = () => {
 
     return (
         <div className="container mt-4">
-            <h2 className="mb-3">Productos</h2>
+            <h1 className="mb-3">Productos</h1>
+  <div className="mb-5"></div>
+
+               <div className="text-end mb-3">
+                    <button
+                        type="button"
+                        className="btn btn-success rounded col-md-2"
+                        onClick={() => window.open('/products/new', '_blank')}
+                    >
+                        + Nuevo Producto
+                    </button>
+                </div>
+
+
+
+
             <form className="row g-2 mb-4" onSubmit={handleSearch}>
-                <div className="col-md-3">
+                <div className="col-md-4">
                     <input
                         type="text"
                         className="form-control"
@@ -357,7 +372,7 @@ const Products: React.FC = () => {
                     />
                 </div>
 
-                <div className="col-md-2">
+                <div className="col-md-4">
                     <select
                         className="form-select"
                         value={productType}
@@ -372,7 +387,7 @@ const Products: React.FC = () => {
                     </select>
                 </div>
 
-                <div className="col-md-1">
+                <div className="col-md-4">
                     <input
                         type="number"
                         className="form-control"
@@ -382,7 +397,7 @@ const Products: React.FC = () => {
                     />
                 </div>
 
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <input
                         type="date"
                         className="form-control"
@@ -390,7 +405,7 @@ const Products: React.FC = () => {
                         onChange={e => setStartDate(e.target.value)}
                     />
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <input
                         type="date"
                         className="form-control"
@@ -399,7 +414,7 @@ const Products: React.FC = () => {
                     />
                 </div>
 
-                <div className="col-md-1">
+                <div className="col-md-3">
                     <input
                         type="number"
                         className="form-control"
@@ -409,7 +424,7 @@ const Products: React.FC = () => {
                     />
                 </div>
 
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <input
                         type="text"
                         className="form-control"
@@ -419,23 +434,17 @@ const Products: React.FC = () => {
                     />
                 </div>
 
-                <div className="col-md-1">
+                <div className="col-md-12">
                     <button type="submit" className="btn btn-primary w-100">Buscar</button>
                 </div>
 
-                <div className="col-md-2 text-end">
-                    <button
-                        type="button"
-                        className="btn btn-success"
-                        onClick={() => navigate('/products/new')}
-                    >
-                        + Nuevo Producto
-                    </button>
-                </div>
+   
             </form>
 
+              <div className="mb-5"></div>
+
             <table className="table table-hover">
-                <thead className="table-dark">
+                <thead className="table-active">
                     <tr>
                         <th>ID</th>
                         <th>Usuario</th>

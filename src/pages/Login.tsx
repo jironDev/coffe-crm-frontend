@@ -101,7 +101,11 @@ const Login = () => {
   };
 
   return (
-    <div className="container py-4 mt-5 login-wrapper">
+
+ 
+    
+<div className="container py-4 mt-5 login-wrapper">
+
       <div className="d-flex flex-column align-items-center mb-3">
         {/* Usa la opción A o B para que esto cargue */}
         {/* <img src="/src/assets/CoffeLogo.png" alt="Coffee CRM Logo" width={100} className="mb-3" /> */}
@@ -151,6 +155,8 @@ const Login = () => {
         </button>
       </form>
     </div>
+
+ 
   );
 };
 

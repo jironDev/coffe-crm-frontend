@@ -182,7 +182,8 @@ import {
 import type { Customer } from '../models/Customer';
 import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
-import InfoIcon from '@mui/icons-material/Info';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 
 const Customers: React.FC = () => {
   const { token } = useAuth();
@@ -230,11 +231,25 @@ const Customers: React.FC = () => {
       <h1 className="text-center mb-3 display-5">
         COFFEE <span className="h1 text-primary display-5">CRM</span>
       </h1>
+
+      
+          {/* Botón Nuevo Cliente debajo de la tabla */}
+          <div className="text-end mt-2">
+            <button
+              type="button"
+              className="btn btn-success rounded col-md-2"
+              onClick={() => window.open('/customers/new', '_blank')}
+            >
+              + Nuevo
+            </button>
+          </div>
+
+
      <p className='text-secondary mb-0'>Busqueda de clientes</p>
 
       {/* Formulario de búsqueda */}
       <form className="row g-2 mb-4 align-items-end" onSubmit={handleSearch}>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <label className="form-label"></label>
           <input
             type="number"
@@ -266,7 +281,7 @@ const Customers: React.FC = () => {
             disabled={!!idFilter}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <label className="form-label"></label>
           <input
             type="text"
@@ -277,13 +292,13 @@ const Customers: React.FC = () => {
             disabled={!!idFilter}
           />
         </div>
-        <div className="col-md-2 text-end">
+        <div className="col-md-12 text-end">
           <button type="submit" className="btn btn-primary w-100 rounded">
             Buscar
           </button>
         </div>
       </form>
-      <hr className="mb-4"/>
+      <div className="mb-5"></div>
 
       {/* Spinner */}
       {loading && (
@@ -295,9 +310,9 @@ const Customers: React.FC = () => {
       {/* Tabla de resultados */}
       {!loading && (
         <>
-          <div className="table-responsive mb-3">
+          <div className="table-responsive mb-3 shadow rounded">
             <table className="table table-hover rounded shadow-sm bg-white mb-0">
-              <thead className="table-dark rounded-top">
+              <thead className="table-dark rounded-top table-active">
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
@@ -325,8 +340,8 @@ const Customers: React.FC = () => {
                         <InfoIcon/>
                       </button> */}
 
-              <a href={`/customers/view/${c.id}`} target="_blank" rel="noopener noreferrer">
- <InfoIcon/>
+              <a href={`/customers/view/${c.id}`} target="_blank" rel="noopener noreferrer" className='btn btn-outline-light border-0'>
+ <InfoOutlinedIcon/>
 </a>
 
 
@@ -343,16 +358,6 @@ const Customers: React.FC = () => {
             </div>
           )}
 
-          {/* Botón Nuevo Cliente debajo de la tabla */}
-          <div className="text-end mt-2">
-            <button
-              type="button"
-              className="btn btn-success rounded"
-              onClick={() => window.open('/customers/new', '_blank')}
-            >
-              + Nuevo
-            </button>
-          </div>
         </>
       )}
     </div>

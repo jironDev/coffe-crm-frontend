@@ -71,7 +71,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/customers">
           <img src={CoffeLogo} alt="Coffee CRM Logo" width={40} />
@@ -79,10 +79,14 @@ export const Navbar: React.FC = () => {
         <div className="navbar-nav">
           {token ? (
             <>
+              <Link className="nav-link" to="/customers">Clientes</Link>
               <Link className="nav-link" to="/products">Productos</Link>
               <Link className="nav-link" to="/sales">Ventas</Link>
+              <Link className="nav-link" to="/balances">Cobranza</Link>
               <Link className="nav-link" to="/suppliers">Proveedores</Link>
               <Link className="nav-link" to="/product-prices">Precios</Link>
+
+
               {role === 'ADMIN' && (
                 <>
                   <Link className="nav-link" to="/workers">Trabajadores</Link>

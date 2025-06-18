@@ -28,8 +28,8 @@ const SaleForm: React.FC = () => {
   // 2) Si es nueva venta, parten todos en "" o 0.
   const [customerId, setCustomerId]       = useState<number>(state?.line ? state.line.customer.id : 0);
   const [productId, setProductId]         = useState<number>(state?.line ? state.line.product.id : 0);
-  const [priceType, setPriceType]         = useState<string>(state?.line ? state.line.priceType : "");
-  const [totalDays, setTotalDays]         = useState<number>(state?.line ? state.line.totalDays : 0);
+  const [priceType, setPriceType]         = useState<string>(state?.line ? state.line.priceType : "perfil_directo");
+  const [totalDays, setTotalDays]         = useState<number>(state?.line ? state.line.totalDays : 30);
   const [assignedAt, setAssignedAt]       = useState<string>(state?.line ? state.line.assignedAt.substring(0, 10) : "");
   const [finalUser1, setFinalUser1]       = useState<string>(state?.line ? (state.line.finalUser1 ?? "") : "");
   const [assignedSlots, setAssignedSlots] = useState<number>(state?.line ? state.line.assignedSlots : 1);
@@ -110,28 +110,28 @@ const SaleForm: React.FC = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">{isEdit ? "Editar Línea de Venta" : "Nueva Venta"}</h2>
+    <div className="container mt-4 ">
+      <h2 className="mb-5">{isEdit ? "Cambiar producto de la Venta" : "Nueva Venta"}</h2>
 
       <form onSubmit={handleSubmit}>
         {/*** Cargamos algunos campos en read-only o hidden si es edición ***/}
         {isEdit && state.line && (
           <>
-            <div className="mb-3">
-              <label className="form-label">ID de la Línea</label>
+            {/* <div className="mb-3">
+              <label className="form-label">Id del Producto actual</label>
               <input
                 type="text"
                 className="form-control"
                 value={state.line.id}
                 readOnly
               />
-            </div>
+            </div> */}
             <div className="mb-3">
               <label className="form-label">Cliente</label>
               <input
                 type="text"
                 className="form-control"
-                value={`${state.line.customer.firstName} ${state.line.customer.lastName} (ID=${state.line.customer.id})`}
+                value={`${state.line.customer.id}:${" "}${state.line.customer.firstName} ${state.line.customer.lastName} `}
                 readOnly
               />
             </div>
@@ -144,6 +144,9 @@ const SaleForm: React.FC = () => {
                 readOnly
               />
             </div>
+
+
+            
             <div className="mb-3">
               <label className="form-label">Total de Días</label>
               <input
@@ -153,6 +156,10 @@ const SaleForm: React.FC = () => {
                 readOnly
               />
             </div>
+
+
+
+
             <div className="mb-3">
               <label className="form-label">Fecha Asignada</label>
               <input
@@ -178,7 +185,7 @@ const SaleForm: React.FC = () => {
 
         {/*** Campo productId: editable en ambos casos ***/}
         <div className="mb-3">
-          <label className="form-label">Producto (ID)</label>
+          <label className="form-label">Id del Producto</label>
           <input
             type="number"
             className="form-control"
@@ -187,8 +194,7 @@ const SaleForm: React.FC = () => {
             required
           />
           <small className="form-text text-muted">
-            En edición solo cambiarás a qué producto está asignada esta línea.
-            En nuevo, indica el ID del producto a vender.
+            En edición solo cambiarás el producto que fue asignado en la venta.
           </small>
         </div>
 
@@ -196,7 +202,7 @@ const SaleForm: React.FC = () => {
         {!isEdit && (
           <>
             <div className="mb-3">
-              <label className="form-label">Cliente (ID)</label>
+              <label className="form-label">Id del Cliente</label>
               <input
                 type="number"
                 className="form-control"
@@ -207,14 +213,14 @@ const SaleForm: React.FC = () => {
             </div>
 
             <div className="mb-3">
-              <label className="form-label">Price Type</label>
+              <label className="form-label">Tipo de Precio</label>
               <select
                 className="form-select"
                 value={priceType}
                 onChange={(e) => setPriceType(e.target.value)}
                 required
               >
-                <option value="">Seleccione priceType</option>
+                {/* <option value="">Seleccione Tipo de Precio</option> */}
                 <option value="perfil_directo">perfil_directo</option>
                 <option value="completa_directo">completa_directo</option>
                 <option value="combo_directo">combo_directo</option>
@@ -223,7 +229,7 @@ const SaleForm: React.FC = () => {
               </select>
             </div>
 
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label className="form-label">Total de Días</label>
               <input
                 type="number"
@@ -233,7 +239,29 @@ const SaleForm: React.FC = () => {
                 required
                 min={1}
               />
-            </div>
+            </div> */}
+
+
+            <div className="mb-3">
+  <label className="form-label">Total de Días</label>
+  <select
+    className="form-select"
+    value={totalDays}
+    onChange={(e) => setTotalDays(Number(e.target.value))}
+    required
+  >
+    {/* <option value="">Seleccione duración</option> */}
+    <option value={30}>30 días</option>
+    <option value={60}>60 días</option>
+    <option value={90}>3 meses</option>
+    <option value={180}>6 meses</option>
+    <option value={365}>1 año</option>
+  </select>
+  {/* <small className="form-text text-muted">
+    Selecciona la duración de la venta.
+  </small> */}
+</div>
+
 
             <div className="mb-3">
               <label className="form-label">Fecha de Asignación</label>
@@ -247,7 +275,7 @@ const SaleForm: React.FC = () => {
             </div>
 
             <div className="mb-3">
-              <label className="form-label">Final User 1 (opcional)</label>
+              <label className="form-label">Usuario Final (opcional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -257,7 +285,7 @@ const SaleForm: React.FC = () => {
             </div>
 
             <div className="mb-3">
-              <label className="form-label">Slots a Asignar</label>
+              <label className="form-label">Cantidad de Slots</label>
               <input
                 type="number"
                 className="form-control"
@@ -269,7 +297,7 @@ const SaleForm: React.FC = () => {
             </div>
 
             <div className="mb-3">
-              <label className="form-label">Notas de la Orden (opcional)</label>
+              <label className="form-label">Notas (opcional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -279,17 +307,21 @@ const SaleForm: React.FC = () => {
             </div>
           </>
         )}
-
-        <button type="submit" className="btn btn-primary">
-          {isEdit ? "Actualizar Línea" : "Crear Venta"}
-        </button>
-        <button
+<div className="d-flex gap-2 mt-2">
+             <button
           type="button"
-          className="btn btn-secondary ms-2"
+          className="btn btn-secondary mt-2 col-md-6 gap-2"
           onClick={() => navigate("/sales")}
         >
           Cancelar
         </button>
+
+        <button type="submit" className="btn btn-primary mt-2  col-md-6 gap-2">
+          {isEdit ? "Mover Producto" : "Crear Venta"}
+        </button>
+
+        </div>
+   
       </form>
     </div>
   );

@@ -92,6 +92,8 @@ import Sales from './pages/Sales';
 import SaleForm from './pages/SaleForm';
 import CustomerDetail from './pages/CustomerDetail';
 import NotFound from './pages/NotFound';
+import Balances from './pages/Balances';
+import BalancesByOrder from './pages/BalancesByOrder';
 
 const HomeRedirect: React.FC = () => {
   const { token } = useAuth();
@@ -134,6 +136,9 @@ export const CoffeCrm: React.FC = () => {
               <Route path="sales" element={<Sales />} />
               <Route path="sales/new" element={<SaleForm />} />
               <Route path="sales/edit/:id" element={<SaleForm />} />
+
+              <Route path="/balances" element={<Balances />} />
+            <Route path="/balances/:id" element={<BalancesByOrder />} />
             </Route>
           </Route>
 

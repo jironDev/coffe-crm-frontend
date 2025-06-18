@@ -159,7 +159,7 @@ const CustomerForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
             </div>
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-primary col-md-12"
               disabled={loading || (isEdit ? role!=='ADMIN' : false)}
             >
               {loading ? 'Guardando…' : <SaveIcon />}

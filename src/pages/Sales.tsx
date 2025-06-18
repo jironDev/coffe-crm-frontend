@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import {
   getAllCustomerProducts,
   getCustomerOrderById,
-  deactivateCustomerProduct,
+  // deactivateCustomerProduct,
   deleteCustomerOrderById
 } from '../services/customerProductService';
 import { productTypeNames } from '../components/productTypeNames';
@@ -23,7 +23,7 @@ import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import BlockIcon from '@mui/icons-material/Block';
+// import BlockIcon from '@mui/icons-material/Block';
 
 interface SearchFilters {
   firstName?: string;
@@ -54,7 +54,7 @@ const Sales: React.FC = () => {
   const [expirationDate, setExpirationDate] = useState<string>('');
   const [finalUser1, setFinalUser1] = useState<string>('');
   // const [finalUser2, setFinalUser2]       = useState<string>('');
-  const [status, setStatus] = useState<'Activo' | 'Vencido' | ''>('');
+  // const [status, setStatus] = useState<'Activo' | 'Vencido' | ''>('');
 
   const navigate = useNavigate();
 
@@ -137,16 +137,16 @@ const Sales: React.FC = () => {
     load();
   };
 
-  const handleDeactivate = async (id: number) => {
-    if (!token) return;
-    try {
-      await deactivateCustomerProduct(token, id);
-      load();
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message ?? 'No se pudo desactivar');
-    }
-  };
+  // const handleDeactivate = async (id: number) => {
+  //   if (!token) return;
+  //   try {
+  //     await deactivateCustomerProduct(token, id);
+  //     load();
+  //   } catch (err: any) {
+  //     console.error(err);
+  //     alert(err.message ?? 'No se pudo desactivar');
+  //   }
+  // };
 
   const handleDeleteOrder = async (orderIdToDelete: number) => {
     if (!token) return;
@@ -174,13 +174,27 @@ const Sales: React.FC = () => {
 
 
   return (
-    <div className="container py-4 mt-4 ">
-      <h1 className="mb-3 american-typewriter">Ventas</h1>
-      <hr className="mb-4" />
+    <div className="container mt-4 ">
+      <h1 className="mb-3">Ventas</h1>
+     <div className="mb-5"></div>
+
+
+     <div className="text-end  mb-3">
+          <button
+            type="button"
+            className="btn btn-success rounded col-md-2"
+            onClick={() => window.open('/sales/new', '_blank')}
+          >
+            + Nueva Venta
+          </button>
+        </div>
+
+
+
 
       <form className="row g-2 mb-4" onSubmit={handleSearch}>
         {/* —— Busca por Order ID —— */}
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="number"
             className="form-control"
@@ -191,7 +205,7 @@ const Sales: React.FC = () => {
         </div>
 
         {/* —— Si ya hay Order ID, deshabilito filtros “cliente/producto/fechas” —— */}
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -201,7 +215,7 @@ const Sales: React.FC = () => {
             disabled={!!orderId.trim()}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -211,7 +225,7 @@ const Sales: React.FC = () => {
             disabled={!!orderId.trim()}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -221,7 +235,7 @@ const Sales: React.FC = () => {
             disabled={!!orderId.trim()}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -232,7 +246,7 @@ const Sales: React.FC = () => {
           />
         </div>
 
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="text"
             className="form-control"
@@ -244,7 +258,7 @@ const Sales: React.FC = () => {
         </div>
 
         {/* —— Campos de fecha de asignación / expiración —— */}
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="date"
             className="form-control"
@@ -254,7 +268,7 @@ const Sales: React.FC = () => {
             disabled={!!orderId.trim()}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-3">
           <input
             type="date"
             className="form-control"
@@ -265,35 +279,10 @@ const Sales: React.FC = () => {
           />
         </div>
 
-        {/* —— Notas finales (se pueden desactivar si hay Order ID) —— */}
-
-
-        {/* <div className="col-md-2">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="FinalUser2"
-            value={finalUser2}
-            onChange={e => setFinalUser2(e.target.value)}
-            disabled={!!orderId.trim()}
-          />
-        </div> */}
-
-        <div className="col-md-2">
-          <select
-            className="form-select"
-            value={status}
-            onChange={e => setStatus(e.target.value as "" | "Activo" | "Vencido")}
-            disabled={!!orderId.trim()}
-          >
-            <option value="">Estado</option>
-            <option value="Activo">Activo</option>
-            <option value="Vencido">Vencido</option>
-          </select>
-        </div>
+  
 
         {/* —— Botón de búsqueda —— */}
-        <div className="col-md-2">
+        <div className="col-md-12">
           <button type="submit" className="btn btn-primary w-100">
             Buscar
           </button>
@@ -303,65 +292,14 @@ const Sales: React.FC = () => {
          * Botón “+ Nueva Venta” siempre activo,
          * no se deshabilita aunque haya OrderId en el filtro. 
          */}
-        <div className="col-md-2 text-end">
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={() => navigate('/sales/new')}
-          >
-            + Nueva Venta
-          </button>
-        </div>
+   
       </form>
+
+      <div className="mb-5" ></div>
 
       {error && <div className="alert alert-danger">{error}</div>}
 
-      {/**
-       * —— Si estamos en “búsqueda por Order ID” (orderDetail ≠ null),
-       * pintamos el detalle de esa orden (un bloque aparte). 
-       */}
-      {/* {orderDetail && (
-        <>
-          <h4 className="mt-4">Detalle de Orden #{orderDetail.id}</h4>
-          <p>
-            Cliente: {orderDetail.customer.firstName}{' '}
-            {orderDetail.customer.lastName} ({orderDetail.customer.phone})
-            <br />
-            Monto total: ${orderDetail.totalAmount.toFixed(2)}
-          </p>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Linea ID</th>
-                <th>Producto</th>
-                <th>Price Type</th>
-                <th>Total Días</th>
-                <th>Asignada</th>
-                <th>Vence</th>
-                <th>Slots</th>
-                <th>FinalUser1</th>
-                <th>FinalUser2</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orderDetail.lines.map((line: OrderLineDetail) => (
-                <tr key={line.id}>
-                  <td>{line.id}</td>
-                  <td>{line.product.username}</td>
-                  <td>{line.priceType.replace('_', ' ')}</td>
-                  <td>{line.totalDays}</td>
-                  <td>{new Date(line.assignedAt).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
-                  <td>{new Date(line.expirationDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
-                  <td>{line.assignedSlots}</td>
-                  <td>{line.finalUser1 ?? '—'}</td>
-                  <td>{line.finalUser2 ?? '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="mb-4"></div>
-        </>
-      )} */}
+   
 
 
 
@@ -389,7 +327,7 @@ const Sales: React.FC = () => {
 
           <div className="card-body">
             {/* Datos principales del cliente */}
-            <p className="mb-1">
+            <p className="mb-3">
               <strong>Cliente:</strong>{' '}
               {orderDetail.customer.firstName} {orderDetail.customer.lastName}{' '}
               ({orderDetail.customer.phone})
@@ -484,11 +422,10 @@ const Sales: React.FC = () => {
        */}
       {salesList.length > 0 && !orderDetail && (
         <>
-          <h4 className="mt-4">Líneas encontradas</h4>
+          {/* <h4 className="mt-4">Líneas encontradas</h4> */}
           <table className="table table-hover">
-            <thead className="table-dark">
+            <thead className="table-active">
               <tr>
-                <th>ID</th>
                 <th>Cliente</th>
                 <th>Producto</th>
                 <th>Tipo de precio</th>
@@ -496,17 +433,16 @@ const Sales: React.FC = () => {
                 <th>Asignada</th>
                 <th>Vence</th>
                 <th>Slots</th>
-                <th>FinalUser1</th>
-                <th>FinalUser2</th>
-                <th>Status</th>
-                <th>Orden</th>
+                <th>Usuario Final</th>
+                {/* <th>FinalUser2</th> */}
+                {/* <th>Status</th> */}
+                <th>Factura N°</th>
                 <th className="text-end">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {salesList.map((line) => (
                 <tr key={line.id}>
-                  <td>{line.id}</td>
                   <td>
                     {line.customer.firstName} {line.customer.lastName}{' '}
                     ({line.customer.phone})
@@ -526,8 +462,6 @@ const Sales: React.FC = () => {
                   </td>
 
 
-                  {/* <td>{new Date(line.expirationDate).toLocaleDateString()}</td> */}
-
                   <td>
                     {(() => {
                       const d = new Date(line.expirationDate);
@@ -536,32 +470,25 @@ const Sales: React.FC = () => {
                     })()}
                   </td>
 
-                  <td>{line.assignedSlots}</td>
-                  <td>{line.finalUser1 ?? '—'}</td>
-                  <td>{line.finalUser2 ?? '—'}</td>
-                  <td>{line.status}</td>
+                  <td className='text-center'>{line.assignedSlots}</td>
+                  <td className='text-center'>{line.finalUser1 ?? '—'}</td>
+                  {/* <td>{line.finalUser2 ?? '—'}</td> */}
+                  {/* <td>{line.status}</td> */}
                   <td className="text-center">{line.orderId}</td>
                   <td className="text-end">
                     {/* Desactivar línea (todos los usuarios autenticados) */}
-                    <button
+                    {/* <button
                       className="btn btn-sm btn-outline-warning me-2"
                       onClick={() => handleDeactivate(line.id)}
                       title="Desactivar"
                     >
                       <BlockIcon fontSize="small" />
-                    </button>
-
-                    {/* Editar línea (solo cambia producto) */}
-                    {/* <button
-                      className="btn btn-sm btn-outline-secondary me-2"
-                      onClick={() => navigate(`/sales/edit/${line.id}`)}
-                      title="Editar línea"
-                    >
-                      <EditIcon fontSize="small" />
                     </button> */}
 
+  
+
                     <button
-                      className="btn btn-sm btn-outline-secondary me-2"
+                      className="btn btn-sm btn-outline-secondary border-0 me-2"
                       onClick={() => navigate(`/sales/edit/${line.id}`, { state: { line } })}
                       title="Editar"
                     >
@@ -572,7 +499,7 @@ const Sales: React.FC = () => {
 
                     {/* Eliminar toda la orden (solo ADMIN) */}
                     <button
-                      className="btn btn-sm btn-outline-danger"
+                      className="btn btn-sm btn-outline-secondary border-0"
                       onClick={() => handleDeleteOrder(line.orderId)}
                       disabled={role !== 'ADMIN'}
                       title="Eliminar orden completa"

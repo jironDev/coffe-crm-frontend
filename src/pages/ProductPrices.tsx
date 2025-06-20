@@ -12,24 +12,25 @@ import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { productTypeNames } from '../components/productTypeNames';
 
 
-const productTypeNames: Record<number, string> = {
-  1: 'NETFLIX',
-  2: 'NETFLIX_VARIAS',
-  3: 'PRIME_VIDEO',
-  4: 'DISNEY_STANDARD',
-  5: 'DISNEY_PREMIUM',
-  6: 'MAX',
-  7: 'SPOTIFY',
-  8: 'YOUTUBE',
-  9: 'PARAMOUNT',
-  10: 'CRUNCHYROLL',
-  11: 'VIX',
-  12: 'VIKI_PASS_PLUS',
-  13: 'FLUJO_TV',
-  14: 'CANVA',
-};
+// const productTypeNames: Record<number, string> = {
+//   1: 'NETFLIX',
+//   2: 'NETFLIX_VARIAS',
+//   3: 'PRIME_VIDEO',
+//   4: 'DISNEY_STANDARD',
+//   5: 'DISNEY_PREMIUM',
+//   6: 'MAX',
+//   7: 'SPOTIFY',
+//   8: 'YOUTUBE',
+//   9: 'PARAMOUNT',
+//   10: 'CRUNCHYROLL',
+//   11: 'VIX',
+//   12: 'VIKI_PASS_PLUS',
+//   13: 'FLUJO_TV',
+//   14: 'CANVA',
+// };
 
 
 
@@ -92,29 +93,31 @@ const handleDelete = async (id: number) => {
 
 
   return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Precios de Producto</h2>
+    <div className="container mt-4">     
+        <h1>Precios de Producto</h1>
+        <div className="mb-3"></div>
+
+ <div className="text-end mb-3">
         <button
-          className="btn btn-primary"
-          onClick={() => navigate('/product-prices/new')}
+          className="btn btn-success rounded col-md-2"
+          onClick={() => window.open('/product-prices/new', '_blank')}
           disabled={role !== 'ADMIN'}
         >
-          + Agregar Precio
+          + Nuevo Precio
         </button>
       </div>
 
 
-
+<div className="table-responsive shadow rounded">
       <table className="table table-hover">
-  <thead className="table-dark table-active">
+  <thead className="table-active small">
     <tr>
       <th>ID</th>                 {/* Este es el id del registro de precio */}
       <th>Producto</th>           {/* Aquí ponemos productTypeId + nombre */}
       <th>Tipo de Cliente</th>
       <th>Tipo Precio</th>
       <th>Precio</th>
-      <th>Id-Tasa de cambio</th>
+      <th className='text-center'>Id-T/C</th>
       <th className="text-end">Acciones</th>
     </tr>
   </thead>
@@ -132,10 +135,10 @@ const handleDelete = async (id: number) => {
         <td>{p.customerType}</td>
         <td>{p.priceType}</td>
         <td>{p.price}</td>
-        <td>{p.exchangeRateId}</td>
+        <td className='text-center'>{p.exchangeRateId}</td>
         <td className="text-end">
           <button
-                  className="btn btn-sm btn-outline-secondary me-2"
+                  className="btn btn-sm btn-outline-secondary border-0 me-2"
                   onClick={() => navigate(`/product-prices/edit/${p.id}`)}
                   disabled={role !== 'ADMIN'}
                   title="Editar"
@@ -143,7 +146,7 @@ const handleDelete = async (id: number) => {
                   <EditIcon fontSize="small" />
                 </button>
                 <button
-                  className="btn btn-sm btn-outline-danger"
+                  className="btn btn-sm btn-outline-secondary border-0"
                   onClick={() => handleDelete(p.id)}
                   disabled={role !== 'ADMIN'}
                   title="Eliminar"
@@ -155,6 +158,7 @@ const handleDelete = async (id: number) => {
     ))}
   </tbody>
 </table>
+</div>
 
       {prices.length === 0 && (
         <div className="alert alert-info mt-3">No hay precios registrados.</div>

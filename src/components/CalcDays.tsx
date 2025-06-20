@@ -32,7 +32,7 @@ export function calcExpiredDays(expirationISO: string): number {
   const exp = new Date(expirationISO);
   const diffMs = now.getTime() - exp.getTime();
   if (diffMs <= 0) return 0;
-  return Math.ceil(diffMs / (1000 * 60 * 60 * 24))-2; // Restamos 2, uno por el desface horario y el segundo porque el dia de expiración no cuenta como vencido
+  return Math.ceil(diffMs / (1000 * 60 * 60 * 24))-1; // Restamos uno por el desface horario
 }
 
 /**

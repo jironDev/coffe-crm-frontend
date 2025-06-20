@@ -1,3 +1,6 @@
+
+
+// // 2da version:
 // import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext';
@@ -11,7 +14,7 @@
 // import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 // import EditIcon from '@mui/icons-material/Edit';
 // import { productTypeNames } from '../components/productTypeNames';
-
+// import CustomerListModal from '../components/CustomerListModal'; 
 
 // const Products: React.FC = () => {
 //     const { token, role } = useAuth();
@@ -26,7 +29,9 @@
 //     const [startDate, setStartDate] = useState('');
 //     const [endDate, setEndDate] = useState('');
 //     const [supplierName, setSupplierName] = useState('');
-//     //   const [productTypeId, setProductTypeId] = useState<string>('');
+
+//     // modal de clientes
+//     const [modalUsername, setModalUsername] = useState<string | null>(null);
 
 //     const navigate = useNavigate();
 
@@ -42,7 +47,6 @@
 //                 startDate,
 //                 endDate,
 //                 supplierName,
-//                 // productTypeId: productTypeId ? parseInt(productTypeId) : undefined
 //             });
 //             setProducts(data);
 //         } catch (err) {
@@ -51,8 +55,6 @@
 //             setLoading(false);
 //         }
 //     };
-
-//     // useEffect(() => { load(); }, [token]);
 
 //     const handleSearch = (e: React.FormEvent) => {
 //         e.preventDefault();
@@ -76,16 +78,31 @@
 //     if (loading) {
 //         return (
 //             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-//                 <CircularProgress />
+//                 <CircularProgress size={24} color="inherit"/>
 //             </Box>
 //         );
 //     }
 
 //     return (
 //         <div className="container mt-4">
-//             <h2 className="mb-3">Productos</h2>
+//             <h1 className="mb-3">Productos</h1>
+//   <div className="mb-5"></div>
+
+//                <div className="text-end mb-3">
+//                     <button
+//                         type="button"
+//                         className="btn btn-success rounded col-md-2"
+//                         onClick={() => window.open('/products/new', '_blank')}
+//                     >
+//                         + Nuevo Producto
+//                     </button>
+//                 </div>
+
+
+
+
 //             <form className="row g-2 mb-4" onSubmit={handleSearch}>
-//                 <div className="col-md-3">
+//                 <div className="col-md-4">
 //                     <input
 //                         type="text"
 //                         className="form-control"
@@ -95,8 +112,7 @@
 //                     />
 //                 </div>
 
-
-//                 <div className="col-md-2">
+//                 <div className="col-md-4">
 //                     <select
 //                         className="form-select"
 //                         value={productType}
@@ -111,8 +127,7 @@
 //                     </select>
 //                 </div>
 
-
-//                 <div className="col-md-1">
+//                 <div className="col-md-4">
 //                     <input
 //                         type="number"
 //                         className="form-control"
@@ -122,20 +137,7 @@
 //                     />
 //                 </div>
 
-
-//                 {/* <div className="col-md-1">
-//   <input
-//     type="number"
-//     className="form-control"
-//     placeholder="Type ID"
-//     value={productTypeId}
-//     onChange={e => setProductTypeId(e.target.value)}
-//   />
-// </div> */}
-
-
-
-//                 <div className="col-md-2">
+//                 <div className="col-md-3">
 //                     <input
 //                         type="date"
 //                         className="form-control"
@@ -143,7 +145,7 @@
 //                         onChange={e => setStartDate(e.target.value)}
 //                     />
 //                 </div>
-//                 <div className="col-md-2">
+//                 <div className="col-md-3">
 //                     <input
 //                         type="date"
 //                         className="form-control"
@@ -152,7 +154,7 @@
 //                     />
 //                 </div>
 
-//                                 <div className="col-md-1">
+//                 <div className="col-md-3">
 //                     <input
 //                         type="number"
 //                         className="form-control"
@@ -162,7 +164,7 @@
 //                     />
 //                 </div>
 
-//                 <div className="col-md-2">
+//                 <div className="col-md-3">
 //                     <input
 //                         type="text"
 //                         className="form-control"
@@ -172,32 +174,23 @@
 //                     />
 //                 </div>
 
-
-//                 <div className="col-md-1">
+//                 <div className="col-md-12">
 //                     <button type="submit" className="btn btn-primary w-100">Buscar</button>
 //                 </div>
 
 
-
-//                 <div className="col-md-2 text-end">
-//                     <button
-//                         type="button"
-//                         className="btn btn-success"
-//                         onClick={() => navigate('/products/new')}
-//                     >
-//                         + Nuevo Producto
-//                     </button>
-//                 </div>
 //             </form>
 
+//               <div className="mb-5"></div>
+
 //             <table className="table table-hover">
-//                 <thead className="table-dark">
+//                 <thead className="table-active">
 //                     <tr>
 //                         <th>ID</th>
 //                         <th>Usuario</th>
 //                         <th>Password</th>
 //                         <th>Tipo</th>
-//                         <th>Capacidad</th>
+//                         <th >Capacidad</th>
 //                         <th>Inicia</th>
 //                         <th>Termina</th>
 //                         <th>Precio-Compra</th>
@@ -213,29 +206,28 @@
 //                             <td>{p.username}</td>
 //                             <td>{p.password}</td>
 //                             <td>{p.productType.name}</td>
-//                             <td>{p.capacity}</td>
-
-                            
-//                             <td>
-//                                 {new Date(p.startDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}
+//                             <td className='text-center'
+//                                 style={{ cursor: 'pointer', color: '#0d6efd', textDecoration: 'underline' }}
+//                                 onClick={() => setModalUsername(p.username)}
+//                                 title="Ver clientes"
+//                             >
+//                                 {p.capacity}
 //                             </td>
-//                             <td>
-//                                 {new Date(p.endDate)
-//                                     .toLocaleDateString('es-ES', { timeZone: 'UTC' })}
-//                             </td>
+//                             <td>{new Date(p.startDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
+//                             <td>{new Date(p.endDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
 //                             <td>{Number(p.pricePurchase).toFixed(2)}</td>
 //                             <td>{p.supplier?.name ?? '—'}</td>
 //                             <td>{p.observations ?? '—'}</td>
 //                             <td className="text-end">
 //                                 <button
-//                                     className="btn btn-sm btn-outline-secondary me-2"
+//                                     className="btn btn-sm btn-outline-secondary me-2 border-0"
 //                                     onClick={() => navigate(`/products/edit/${p.id}`)}
 //                                     title="Editar"
 //                                 >
 //                                     <EditIcon fontSize="small" />
 //                                 </button>
 //                                 <button
-//                                     className="btn btn-sm btn-outline-danger"
+//                                     className="btn btn-sm btn-outline-secondary me-2 border-0"
 //                                     onClick={() => handleDelete(p.id)}
 //                                     disabled={role !== 'ADMIN'}
 //                                     title="Eliminar"
@@ -253,6 +245,14 @@
 //                     No se encontraron productos.
 //                 </div>
 //             )}
+
+//             {/* ✅ Modal visible si modalUsername está definido */}
+//             {modalUsername && (
+//                 <CustomerListModal
+//                     username={modalUsername}
+//                     onClose={() => setModalUsername(null)}
+//                 />
+//             )}
 //         </div>
 //     );
 // };
@@ -260,7 +260,6 @@
 // export default Products;
 
 
-// 2da version:
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -274,7 +273,31 @@ import Box from '@mui/material/Box';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { productTypeNames } from '../components/productTypeNames';
-import CustomerListModal from '../components/CustomerListModal'; 
+import CustomerListModal from '../components/CustomerListModal';
+
+
+
+
+
+const productTypeValues: Record<number, string> = {
+  1: 'NETFLIX',
+  2: 'NETFLIX_VARIAS',
+  3: 'PRIME_VIDEO',
+  4: 'DISNEY_STANDARD',
+  5: 'DISNEY_PREMIUM',
+  6: 'MAX',
+  7: 'SPOTIFY',
+  8: 'YOUTUBE',
+  9: 'PARAMOUNT',
+  10: 'CRUNCHYROLL',
+  11: 'VIX',
+  12: 'VIKI_PASS_PLUS',
+  13: 'FLUJO_TV',
+  14: 'CANVA',
+};
+
+
+
 
 const Products: React.FC = () => {
     const { token, role } = useAuth();
@@ -292,6 +315,9 @@ const Products: React.FC = () => {
 
     // modal de clientes
     const [modalUsername, setModalUsername] = useState<string | null>(null);
+
+    // estado para saber si ya se hizo la búsqueda
+    const [hasSearched, setHasSearched] = useState(false);
 
     const navigate = useNavigate();
 
@@ -311,6 +337,7 @@ const Products: React.FC = () => {
             setProducts(data);
         } catch (err) {
             console.error(err);
+            // opcional: podrías manejar un estado de error para mostrar alertas
         } finally {
             setLoading(false);
         }
@@ -318,6 +345,8 @@ const Products: React.FC = () => {
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
+        // marcar que ya se buscó
+        setHasSearched(true);
         load();
     };
 
@@ -335,10 +364,14 @@ const Products: React.FC = () => {
         }
     };
 
+    // Creamos la "fecha de hoy" ajustada a medianoche para comparar solo fechas:
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     if (loading) {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-                <CircularProgress size={24} color="inherit"/>
+                <CircularProgress size={24} color="inherit" />
             </Box>
         );
     }
@@ -346,20 +379,17 @@ const Products: React.FC = () => {
     return (
         <div className="container mt-4">
             <h1 className="mb-3">Productos</h1>
-  <div className="mb-5"></div>
+            <div className="mb-3"></div>
 
-               <div className="text-end mb-3">
-                    <button
-                        type="button"
-                        className="btn btn-success rounded col-md-2"
-                        onClick={() => window.open('/products/new', '_blank')}
-                    >
-                        + Nuevo Producto
-                    </button>
-                </div>
-
-
-
+            <div className="text-end mb-3">
+                <button
+                    type="button"
+                    className="btn btn-success rounded col-md-2"
+                    onClick={() => window.open('/products/new', '_blank')}
+                >
+                    + Nuevo Producto
+                </button>
+            </div>
 
             <form className="row g-2 mb-4" onSubmit={handleSearch}>
                 <div className="col-md-4">
@@ -371,7 +401,7 @@ const Products: React.FC = () => {
                         onChange={e => setQ(e.target.value)}
                     />
                 </div>
-
+{/* 
                 <div className="col-md-4">
                     <select
                         className="form-select"
@@ -385,7 +415,29 @@ const Products: React.FC = () => {
                             </option>
                         ))}
                     </select>
-                </div>
+                </div> */}
+                
+<div className="col-md-4">
+  <select
+    className="form-select"
+    value={productType}
+    onChange={(e) => setProductType(e.target.value)}
+  >
+    <option value="">Tipo</option>
+    {Object.entries(productTypeNames).map(([idStr, label]) => {
+      const id = Number(idStr);
+      const valuePure = productTypeValues[id];
+      if (!valuePure) return null; // por si hay inconsistencia
+      return (
+        <option key={id} value={valuePure}>
+          {label}
+        </option>
+      );
+    })}
+  </select>
+</div>
+
+
 
                 <div className="col-md-4">
                     <input
@@ -418,7 +470,7 @@ const Products: React.FC = () => {
                     <input
                         type="number"
                         className="form-control"
-                        placeholder="Precio C."
+                        placeholder="Precio de Compra"
                         value={pricePurchase}
                         onChange={e => setPricePurchase(e.target.value)}
                     />
@@ -438,75 +490,105 @@ const Products: React.FC = () => {
                     <button type="submit" className="btn btn-primary w-100">Buscar</button>
                 </div>
 
-   
             </form>
 
-              <div className="mb-5"></div>
+            <div className="mb-5"></div>
 
-            <table className="table table-hover">
-                <thead className="table-active">
-                    <tr>
-                        <th>ID</th>
-                        <th>Usuario</th>
-                        <th>Password</th>
-                        <th>Tipo</th>
-                        <th >Capacidad</th>
-                        <th>Inicia</th>
-                        <th>Termina</th>
-                        <th>Precio-Compra</th>
-                        <th>Proveedor</th>
-                        <th>Observaciones</th>
-                        <th className="text-end">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map(p => (
-                        <tr key={p.id}>
-                            <td>{p.id}</td>
-                            <td>{p.username}</td>
-                            <td>{p.password}</td>
-                            <td>{p.productType.name}</td>
-                            <td className='text-center'
-                                style={{ cursor: 'pointer', color: '#0d6efd', textDecoration: 'underline' }}
-                                onClick={() => setModalUsername(p.username)}
-                                title="Ver clientes"
-                            >
-                                {p.capacity}
-                            </td>
-                            <td>{new Date(p.startDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
-                            <td>{new Date(p.endDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
-                            <td>{Number(p.pricePurchase).toFixed(2)}</td>
-                            <td>{p.supplier?.name ?? '—'}</td>
-                            <td>{p.observations ?? '—'}</td>
-                            <td className="text-end">
-                                <button
-                                    className="btn btn-sm btn-outline-secondary me-2"
-                                    onClick={() => navigate(`/products/edit/${p.id}`)}
-                                    title="Editar"
-                                >
-                                    <EditIcon fontSize="small" />
-                                </button>
-                                <button
-                                    className="btn btn-sm btn-outline-danger"
-                                    onClick={() => handleDelete(p.id)}
-                                    disabled={role !== 'ADMIN'}
-                                    title="Eliminar"
-                                >
-                                    <DeleteOutlineIcon fontSize="small" />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
 
-            {products.length === 0 && (
-                <div className="alert alert-info mt-3">
-                    No se encontraron productos.
-                </div>
+
+
+
+
+            {/* Renderizar la tabla solo después de buscar */}
+            {hasSearched && (
+                <>
+                    {products.length > 0 ? (
+                        <div className="table-responsive shadow rounded">
+                            <table className="table table-hover">
+                                <thead className="table-active small">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Usuario</th>
+                                        <th>Password</th>
+                                        <th className='text-center'>Tipo</th>
+                                        <th>Slots</th>
+                                        <th>Inicia</th>
+                                        <th>Termina</th>
+                                        <th>Precio-Compra</th>
+                                        <th>Proveedor</th>
+                                        <th>Observaciones</th>
+                                        <th className="text-end">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+
+                                    {products.map(p => {
+
+                                        // Calculamos las clases condicionales:
+                                        const capacityClass = p.capacity > 0 ? 'text-teal fw-bold' : 'text-secondary';
+                                        // Parsear endDate a Date:
+                                        const endDateObj = new Date(p.endDate);
+                                        // Ajustar endDateObj a medianoche si se desea comparar solo fecha:
+                                        endDateObj.setHours(0, 0, 0, 0);
+                                        // Según tu condición: si endDate >= today, aplicar 'text-danger', si no, '', pero ajústalo a tu lógica:
+                                        const endDateClass = endDateObj >= today ? 'text-danger' : '';
+
+
+                                        return (
+
+
+                                            <tr key={p.id}>
+                                                <td>{p.id}</td>
+                                                <td>{p.username}</td>
+                                                <td>{p.password}</td>
+                                                <td className='text-center small'>{productTypeNames[p.productType.id] ?? p.productType.name}</td>
+
+                                                <td className={`text-center ${capacityClass}`}
+                                                    style={{ cursor: 'pointer', color: 'text-light', textDecoration: 'underline' }}
+                                                    onClick={() => setModalUsername(p.username)}
+                                                    title="Ver clientes"
+                                                >
+                                                    {p.capacity}
+                                                </td>
+                                                <td>{new Date(p.startDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
+                                                <td className={endDateClass}>{new Date(p.endDate).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</td>
+                                                <td className='text-center'>{Number(p.pricePurchase).toFixed(2)}</td>
+                                                <td>{p.supplier?.name ?? '—'}</td>
+                                                <td>{p.observations ?? '—'}</td>
+                                                <td className="text-end">
+                                                    <button
+                                                        className="btn btn-sm btn-outline-secondary me-2 border-0"
+                                                        onClick={() => navigate(`/products/edit/${p.id}`)}
+                                                        title="Editar"
+                                                    >
+                                                        <EditIcon fontSize="small" />
+                                                    </button>
+                                                    <button
+                                                        className="btn btn-sm btn-outline-secondary me-2 border-0"
+                                                        onClick={() => handleDelete(p.id)}
+                                                        disabled={role !== 'ADMIN'}
+                                                        title="Eliminar"
+                                                    >
+                                                        <DeleteOutlineIcon fontSize="small" />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <div className="alert alert-info mt-3">
+                            No se encontraron productos.
+                        </div>
+                    )}
+                </>
             )}
 
-            {/* ✅ Modal visible si modalUsername está definido */}
+            {/* Modal de clientes */}
             {modalUsername && (
                 <CustomerListModal
                     username={modalUsername}

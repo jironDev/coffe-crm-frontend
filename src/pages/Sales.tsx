@@ -176,7 +176,7 @@ const Sales: React.FC = () => {
   return (
     <div className="container mt-4 ">
       <h1 className="mb-3">Ventas</h1>
-     <div className="mb-5"></div>
+     <div className="mb-3"></div>
 
 
      <div className="text-end  mb-3">
@@ -306,9 +306,9 @@ const Sales: React.FC = () => {
       {/* //pintamos el detalle de esa orden como una “factura” dentro de una Card.  */}
 
       {orderDetail && (
-        <div className="container py-4 card mb-4 shadow-sm">
+        <div className="container py-4 card mb-4 shadow rounded">
           {/* Header de la Card con ID de factura, cliente y fecha */}
-          <div className="card-header d-flex justify-content-between align-items-center">
+          <div className="card-header d-flex justify-content-between align-items-center bg-tertiary">
             <div>
               <h4 className="card-title mb-0">
                 N° Factura: {orderDetail.id}
@@ -423,8 +423,10 @@ const Sales: React.FC = () => {
       {salesList.length > 0 && !orderDetail && (
         <>
           {/* <h4 className="mt-4">Líneas encontradas</h4> */}
+
+           <div className="table-responsive shadow rounded">
           <table className="table table-hover">
-            <thead className="table-active">
+            <thead className="table-active small">
               <tr>
                 <th>Cliente</th>
                 <th>Producto</th>
@@ -511,6 +513,7 @@ const Sales: React.FC = () => {
               ))}
             </tbody>
           </table>
+          </div>
           <div className="mb-4"></div>
         </>
       )}

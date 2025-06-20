@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
                 </>
               )}
               <button className="btn btn-link nav-link" onClick={handleLogout}>
-                Logout
+                Cerrar Sesión
               </button>
             </>
           ) : (

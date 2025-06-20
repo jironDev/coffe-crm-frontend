@@ -10,23 +10,24 @@ import {
   CreateProductPriceDTO
 } from '../services/productPricesService';
 import SaveIcon from '@mui/icons-material/Save';
+import { productTypeNames } from '../components/productTypeNames';
 
-const productTypeNames: Record<number, string> = {
-  1: 'NETFLIX',
-  2: 'NETFLIX_VARIAS',
-  3: 'PRIME_VIDEO',
-  4: 'DISNEY_STANDARD',
-  5: 'DISNEY_PREMIUM',
-  6: 'MAX',
-  7: 'SPOTIFY',
-  8: 'YOUTUBE',
-  9: 'PARAMOUNT',
-  10: 'CRUNCHYROLL',
-  11: 'VIX',
-  12: 'VIKI_PASS_PLUS',
-  13: 'FLUJO_TV',
-  14: 'CANVA',
-};
+// const productTypeNames: Record<number, string> = {
+//   1: 'NETFLIX',
+//   2: 'NETFLIX_VARIAS',
+//   3: 'PRIME_VIDEO',
+//   4: 'DISNEY_STANDARD',
+//   5: 'DISNEY_PREMIUM',
+//   6: 'MAX',
+//   7: 'SPOTIFY',
+//   8: 'YOUTUBE',
+//   9: 'PARAMOUNT',
+//   10: 'CRUNCHYROLL',
+//   11: 'VIX',
+//   12: 'VIKI_PASS_PLUS',
+//   13: 'FLUJO_TV',
+//   14: 'CANVA',
+// };
 
 const PRICE_TYPES = [
   'perfil_directo',
@@ -110,7 +111,9 @@ const ProductPriceForm: React.FC<FormProps> = ({ isEdit = false }) => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">{isEdit ? 'Editar Precio' : 'Agregar Precio'}</h2>
+      <h1 className="mb-3">{isEdit ? 'Editar Precio' : 'Agregar Precio'}</h1>
+      <div className="mb-5"></div>
+
       <form onSubmit={handleSubmit}>
         {loading ? (
           <p>Cargando...</p>

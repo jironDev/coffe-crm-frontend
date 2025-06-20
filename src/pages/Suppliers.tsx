@@ -63,27 +63,46 @@ const Suppliers: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-3">Proveedores</h2>
-      <form className="d-flex mb-3" onSubmit={handleSearch}>
-        <input
-          type="text"
-          className="form-control me-2"
-          placeholder="Buscar por nombre..."
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-        />
-        <button className="btn btn-primary">Buscar</button>
-        <button
+      <h1 className="mb-3">Proveedores</h1>
+      <div className="mb-5"></div>
+
+
+<div className="text-end mb-3">
+           <button
           type="button"
-          className="btn btn-success ms-2"
-          onClick={() => navigate('/suppliers/new')}
+          className="btn btn-success rounded col-md-2"
+          onClick={() => window.open('/suppliers/new', '_blank')}
         >
           + Nuevo Proveedor
         </button>
+        </div>
+
+
+      <form className="row g-2 mb-4" onSubmit={handleSearch}>
+        <div className="col-md-12">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Nombre del Proveedor"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+        />
+        </div>
+
+
+        <div className="col-md-12">
+        <button className="btn btn-primary w-100">Buscar</button>
+</div>
+
+   
       </form>
 
+      <div className="mb-5"></div>
+
+
+<div className="table-responsive shadow rounded">
       <table className="table table-hover">
-        <thead className="table-dark">
+        <thead className="table-active">
           <tr>
             <th>ID</th>
             <th>Nombre</th>
@@ -101,14 +120,14 @@ const Suppliers: React.FC = () => {
               <td>{new Date(s.createdAt).toLocaleDateString()}</td>
               <td className="text-end">
                 <button
-                  className="btn btn-sm btn-outline-secondary me-2"
+                  className="btn btn-sm btn-outline-secondary border-0 e-2"
                   onClick={() => navigate(`/suppliers/edit/${s.id}`)}
                   title="Editar"
                 >
                   <EditIcon fontSize="small" />
                 </button>
                 <button
-                  className="btn btn-sm btn-outline-danger"
+                  className="btn btn-sm btn-outline-secondary border-0"
                   onClick={() => handleDelete(s.id)}
                   title="Eliminar"
                 >
@@ -119,6 +138,7 @@ const Suppliers: React.FC = () => {
           ))}
         </tbody>
       </table>
+      </div>
 
       {suppliers.length === 0 && (
         <div className="alert alert-info mt-3">No se encontraron proveedores.</div>

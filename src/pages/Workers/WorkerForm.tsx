@@ -89,7 +89,7 @@ const WorkerForm = ({ isEdit = false }: WorkerFormProps) => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">{isEdit ? 'Editar' : 'Agregar nuevo trabajador'}</h2>
+      <h2 className="mb-4">{isEdit ? 'Editar' : 'Nuevo trabajador'}</h2>
       <form onSubmit={handleSubmit}>
 
         <div className="mb-3">

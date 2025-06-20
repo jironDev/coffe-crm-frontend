@@ -534,7 +534,7 @@ const Balances: React.FC = () => {
       ) : balances.length > 0 ? (
         <div className="table-responsive shadow rounded">
           <table className="table table-hover">
-            <thead className="table-dark table-active">
+            <thead className="table-dark table-active small">
               <tr>
                 <th>Cliente</th>
                 <th>Producto</th>

@@ -59,7 +59,9 @@ const SupplierForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">{isEdit ? 'Editar Proveedor' : 'Nuevo Proveedor'}</h2>
+      <h1 className="mb-4">{isEdit ? 'Editar Proveedor' : 'Nuevo Proveedor'}</h1>
+    <div className="mb-5"></div>
+
       <form onSubmit={handleSubmit}>
         {loading ? (
           <p>Cargando…</p>
@@ -89,7 +91,7 @@ const SupplierForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            <button type="submit" className="btn btn-primary col-md-12 w-100" disabled={loading}>
               {loading ? 'Guardando…' : <SaveIcon />}
             </button>
           </>

@@ -123,7 +123,9 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
 
     return (
         <div className="container mt-4">
-            <h2 className="mb-4">{isEdit ? 'Editar Producto' : 'Nuevo Producto'}</h2>
+            <h1 className="mb-4">{isEdit ? 'Editar Producto' : 'Nuevo Producto'}</h1>
+            <div className="mb-5"></div>
+
             <form onSubmit={handleSubmit}>
                 {loading ? <p>Cargando…</p> : (
                     <>
@@ -161,14 +163,14 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
                                 required
                             >
                                 {Object.entries(productTypeNames).map(([id, name]) => (
-                                    <option key={id} value={Number(id)}>{id} — {name}</option>
+                                    <option key={id} value={Number(id)}>{id}: {name}</option>
                                 ))}
                             </select>
                         </div>
 
 
                         <div className="row">
-                            <div className="col-md-3 mb-3">
+                            <div className="col-md-4 mb-3">
                                 <label className="form-label">Inicio</label>
                                 <input
                                     type="date"
@@ -179,7 +181,7 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
                                     required
                                 />
                             </div>
-                            <div className="col-md-3 mb-3">
+                            <div className="col-md-4 mb-3">
                                 <label className="form-label">Fin</label>
                                 <input
                                     type="date"
@@ -190,7 +192,7 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
                                     required
                                 />
                             </div>
-                            <div className="col-md-3 mb-3">
+                            <div className="col-md-4 mb-3">
                                 <label className="form-label">Precio Compra</label>
                                 <input
                                     type="number"
@@ -222,7 +224,7 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
 
 
 
-                            <div className="col-md-3 mb-3">
+                            <div className="col-md-12 mb-3">
                                 <label className="form-label">Observaciones</label>
                                 <textarea
                                     name="observations"
@@ -233,8 +235,8 @@ const ProductForm: React.FC<{ isEdit?: boolean }> = ({ isEdit = false }) => {
                             </div>
                         </div>
 
-                        <button className="btn btn-primary" disabled={loading || role !== 'ADMIN'}>
-                            {loading ? 'Procesando…' : <SaveIcon />}
+                        <button className="btn btn-primary col-md-12 w-100" disabled={loading || role !== 'ADMIN'}>
+                            {loading ? 'Guardando…' : <SaveIcon />}
                         </button>
                     </>
                 )}

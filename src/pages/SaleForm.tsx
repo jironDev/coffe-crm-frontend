@@ -9,6 +9,7 @@ import {
 } from "../services/customerProductService";
 
 import type {  OrderLineDetail } from "../services/customerProductService";
+import SaveIcon from "@mui/icons-material/Save";
 
 interface FormState {
   // Cuando venimos de “Editar”, location.state.line será de tipo OrderLineDetail (o CustomerProductWithRelations),
@@ -33,9 +34,13 @@ const SaleForm: React.FC = () => {
   const [assignedAt, setAssignedAt]       = useState<string>(state?.line ? state.line.assignedAt.substring(0, 10) : "");
   const [finalUser1, setFinalUser1]       = useState<string>(state?.line ? (state.line.finalUser1 ?? "") : "");
   const [assignedSlots, setAssignedSlots] = useState<number>(state?.line ? state.line.assignedSlots : 1);
-  // “notes” va en la orden. Si venimos de edición, la orden pudo tener notas concatenadas,
-  // pero como sólo editamos producto, tal vez no sea crítico. Lo dejamos para crear la venta nueva.
+
+  
   const [notes, setNotes] = useState<string>("");
+
+
+   // Estado de loading
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Si estamos en edición, no vamos a permitir cambiar “orderId ni createdAt ni totalAmount”.
   // Sólo permitimos “mover” la línea a otro producto. Por tanto, el único campo que realmente
@@ -62,6 +67,8 @@ const SaleForm: React.FC = () => {
       alert("No estás autenticado.");
       return;
     }
+
+      setLoading(true);
 
     try {
       if (isEdit && state.line) {
@@ -308,16 +315,30 @@ const SaleForm: React.FC = () => {
           </>
         )}
 <div className="d-flex gap-2 mt-2">
-             <button
-          type="button"
-          className="btn btn-secondary mt-2 col-md-6 gap-2"
-          onClick={() => navigate("/sales")}
-        >
-          Cancelar
-        </button>
 
-        <button type="submit" className="btn btn-primary mt-2  col-md-6 gap-2">
-          {isEdit ? "Mover Producto" : "Crear Venta"}
+
+        <button type="submit" className="btn btn-primary col-md-12 mb-5 w-100"
+          disabled={loading}>
+
+               {loading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Guardando...
+                </>
+              ) : (
+                <>
+                  <SaveIcon className="me-2" />
+                
+                </>
+              )}
+       
+       
+           {/* {<SaveIcon />} */}
+          
         </button>
 
         </div>

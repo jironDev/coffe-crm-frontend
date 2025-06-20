@@ -71,17 +71,23 @@ const WorkerList = () => {
   }
 
   return (
-    <div className="container mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className='american-typewriter'>Lista de Trabajadores</h2>
-        <Link to="/workers/new" className="btn btn-primary text-primary-text-emphasis ">
-          <i className="bi bi-plus-circle me-2"></i>
-          Agregar Trabajador
-        </Link>
+    <div className="container mt-4">     
+        <h1 className="mb-3">Trabajadores</h1>
+        <div className="mb-3"></div>
+
+         <div className="text-end mb-3">
+         <button
+                    type="button"
+                    className="btn btn-success rounded col-md-2"
+                    onClick={() => window.open('/workers/new', '_blank')}
+                >
+          + Nuevo Trabajador
+        </button>
       </div>
 
-      <table className="table table-hover table-striped">
-        <thead className="table-dark">
+<div className="table-responsive shadow rounded">
+      <table className="table table-hover">
+        <thead className="table-active small">
           <tr >
             <th>ID</th>
             <th>First Name</th>
@@ -92,7 +98,7 @@ const WorkerList = () => {
             <th className="text-end">Acciones</th>
           </tr>
         </thead>
-        <tbody className="table-group-divider">
+        <tbody >
           {workers.map((worker) => (
             <tr key={worker.id}>
               <td>{worker.id}</td>
@@ -107,7 +113,7 @@ const WorkerList = () => {
                   className="btn btn-sm btn-outline-secondary border-0 me-2"
                   title="Editar"
                 >
-                  <i className="bi bi-pencil"></i><EditIcon />
+                  <i className="bi bi-pencil"></i><EditIcon fontSize="small"/>
                 </Link>
                 <button 
                   onClick={() => handleDelete(worker.id)}
@@ -115,12 +121,13 @@ const WorkerList = () => {
                   title="Eliminar"
                 >
                   <i className="bi bi-trash"></i>
-                <DeleteOutlineIcon/></button>
+                <DeleteOutlineIcon fontSize="small"/></button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
 
       {workers.length === 0 && (
         <div className="alert alert-info mt-4">

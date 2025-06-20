@@ -326,7 +326,7 @@ const BalancesByOrder: React.FC = () => {
       ) : balances.length > 0 && commonCustomer && commonExpirationISO && commonStatus !== null ? (
         <div className="card shadow rounded w-75 mx-auto">
           {/* Header con info común */}
-          <div className="card-header bg-secondary text-white">
+          <div className="card-header bg-indigo text-white">
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
               {/* Cliente */}
               <div className="mb-2 mb-md-0">

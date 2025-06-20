@@ -41,3 +41,36 @@ body{
   background-color: blue;
   color: #fff;
 }
+
+
+/* // Bootstrap Variables */
+
+.text-teal {
+  color: var(--bs-teal) !important;
+}
+.bg-teal {
+  background-color: var(--bs-teal) !important;
+
+}
+
+
+.text-indigo {
+  color: var(--bs-indigo) !important;
+}
+.bg-indigo {
+  background-color: var(--bs-indigo) !important;
+}
+
+
+.text-blue {
+  color: var(--bs-blue) !important;
+}
+.bg-blue {
+  background-color: var(--bs-blue) !important;
+}
+
+
+
+
+
+/* // Bootstrap Variables */

@@ -28,7 +28,7 @@ body{
   
 
   /* background: radial-gradient(circle at center,  #A9C6D9 0%, #6D90A6 15%, #5d7a8d 25%, #254559 50%, #1a313f 70%, #011526 100%); */
-  background: linear-gradient(50deg,  #A9C6D9 0%, #6D90A6 15%, #5d7a8d 25%, #254559 50%, #1a313f 70%, #011526 100%);
+  background: linear-gradient(50deg,  #A9C6D9 0%, #6D90A6 10%, #5d7a8d 15%, #254559 50%, #1a313f 70%, #011526 100%);
 
     background-repeat: no-repeat;
 

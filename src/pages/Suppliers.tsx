@@ -10,6 +10,7 @@ import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 const Suppliers: React.FC = () => {
   const { token } = useAuth();
@@ -63,8 +64,8 @@ const Suppliers: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Proveedores</h1>
-      <div className="mb-5"></div>
+      <h1 className="mb-3"> <LocalShippingIcon fontSize="large"/> Proveedores</h1>
+      <div className="mb-3"></div>
 
 
 <div className="text-end mb-3">

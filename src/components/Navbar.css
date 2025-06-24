@@ -1,0 +1,103 @@
+/* Navbar.css */
+
+
+/* Navbar.css */
+
+/* Elimina márgenes extra si existieran */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* /* Navbar.css */
+
+/* Ajusta padding/margen si aún no lo tienes: */
+.navbar-nav .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem; /* para que el hover con background luzca con esquinas suaves */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover/focus: fondo ligeramente más claro y texto/icono primary */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--bs-primary) !important;
+}
+
+/* Icono dentro de nav-link */
+.navbar-nav .nav-link .nav-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+/* Hover sobre el enlace colorea también el icono */
+.navbar-nav .nav-link:hover .nav-icon,
+.navbar-nav .nav-link:focus .nav-icon {
+  color: var(--bs-primary) !important;
+}
+
+/* Estado activo: fondo y color similar al hover para indicar seleccionado */
+.navbar-nav .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: var(--bs-primary) !important;
+}
+
+.navbar-nav .nav-link.active .nav-icon {
+  color: var(--bs-primary) !important;
+}
+
+/* Para el botón de logout (btn-link nav-link) igual */
+.navbar-nav .btn-link.nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar-nav .btn-link.nav-link:hover,
+.navbar-nav .btn-link.nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--bs-primary) !important;
+}
+
+.navbar-nav .btn-link.nav-link .nav-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.navbar-nav .btn-link.nav-link:hover .nav-icon,
+.navbar-nav .btn-link.nav-link:focus .nav-icon {
+  color: var(--bs-primary) !important;
+}
+
+.navbar-nav .btn-link.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: var(--bs-primary) !important;
+}
+
+.navbar-nav .btn-link.nav-link.active .nav-icon {
+  color: var(--bs-primary) !important;
+}
+
+
+
+
+
+
+/* Cambia el color al pasar el mouse sobre .nav-link en la navbar Bootstrap */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--bs-primary) !important;
+}
+/* Si usas btn-link en logout, también: */
+.navbar-nav .btn-link.nav-link:hover,
+.navbar-nav .btn-link.nav-link:focus {
+  color: var(--bs-primary) !important;
+}

@@ -6,6 +6,8 @@ import {
   deleteExchangeRateAdmin
 } from '../services/exchangeRatesService';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+
 
 
 const AdminExchangeRates = () => {
@@ -46,11 +48,11 @@ const AdminExchangeRates = () => {
 
   return (
     <div className="container mt-4">
-      <h1>Tasas de Cambio</h1>
+      <h1><CurrencyExchangeIcon fontSize="large"/> Tasas de Cambio</h1>
       <div className="mb-5"></div>
 
 
-      <form className="row g-2 mb-4">
+      <form className="row g-2 mb-2">
 
       <div className="col-md-6">
         <input

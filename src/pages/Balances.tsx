@@ -299,6 +299,7 @@ import Box from '@mui/material/Box';
 
 // Importamos los helpers de fecha
 import { formatDate, calcRemainingDays, calcExpiredDays, calcStatus } from '../components/CalcDays';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 
 
@@ -384,7 +385,7 @@ const Balances: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Cobranza</h1>
+      <h1 className="mb-3"><MonetizationOnIcon fontSize="large"/> Cobranza</h1>
       <div className="mb-5"></div>
 
       {/* Formulario de búsqueda */}

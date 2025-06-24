@@ -13,24 +13,9 @@ import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { productTypeNames } from '../components/productTypeNames';
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 
 
-// const productTypeNames: Record<number, string> = {
-//   1: 'NETFLIX',
-//   2: 'NETFLIX_VARIAS',
-//   3: 'PRIME_VIDEO',
-//   4: 'DISNEY_STANDARD',
-//   5: 'DISNEY_PREMIUM',
-//   6: 'MAX',
-//   7: 'SPOTIFY',
-//   8: 'YOUTUBE',
-//   9: 'PARAMOUNT',
-//   10: 'CRUNCHYROLL',
-//   11: 'VIX',
-//   12: 'VIKI_PASS_PLUS',
-//   13: 'FLUJO_TV',
-//   14: 'CANVA',
-// };
 
 
 
@@ -94,7 +79,7 @@ const handleDelete = async (id: number) => {
 
   return (
     <div className="container mt-4">     
-        <h1>Precios de Producto</h1>
+        <h1><PriceCheckIcon fontSize="large"/> Precios</h1>
         <div className="mb-3"></div>
 
  <div className="text-end mb-3">

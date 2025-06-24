@@ -6,6 +6,7 @@ import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import WorkIcon from '@mui/icons-material/Work';
 
 
 const API_BASE = 'https://crm-nicastream.onrender.com'; 
@@ -72,7 +73,7 @@ const WorkerList = () => {
 
   return (
     <div className="container mt-4">     
-        <h1 className="mb-3">Trabajadores</h1>
+        <h1 className="mb-3"><WorkIcon fontSize="large"/> Trabajadores</h1>
         <div className="mb-3"></div>
 
          <div className="text-end mb-3">

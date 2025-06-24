@@ -15,8 +15,46 @@ html{
 }
 
 body{
-    background: #2a2f38;
-    color: #fff;
+    /* background: #2a2f38;
+    color: #fff; */
+
+      /* Degradado líneal de arriba a abajo (por defecto 180deg) */
+  /* background: linear-gradient(#2a2f38, #1e242b); */
+  /* O especificando dirección: de izquierda a derecha: */
+  /* background: linear-gradient(to right, #2a2f38, #1e242b); */
+  /* O en diagonal: */
+  /* background: radial-gradient(circle at center, #D0E5F2 0%, #A9C6D9 15%, #6D90A6 30%, #254559 60%, #011526 100%); */
+
+  background: radial-gradient(circle at center,  #A9C6D9 0%, #6D90A6 15%, #5d7a8d 25%, #254559 50%, #1a313f 70%, #011526 100%);
+
+
+    background-repeat: no-repeat;
+
+      background-attachment: fixed;
+  /* Fallback de color mientras no carga o en navegadores antiguos: */
+
+
+
+
+  /* Que se mantenga fijo al viewport */
+
+  /* Centrarlo (por si se ajusta) */
+  background-position: center center;
+  /* Asegurar que cubra todo el área del viewport */
+  background-size: cover;
+
+
+
+
+
+
+
+
+
+
+
+  /* background-color: #2a2f38; */
+  color: #fff;
 }
 
 

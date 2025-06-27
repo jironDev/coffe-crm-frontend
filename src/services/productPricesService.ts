@@ -28,6 +28,40 @@ export interface CreateProductPriceDTO {
  * Obtiene todos los precios de producto (ruta pública,
  * exige solo token de admin o worker)
  */
+// export async function getAllProductPrices(
+//   token: string,
+//   filters: Partial<{
+//     productTypeId: number;
+//     customerType: CustomerType;
+//     price: number;
+//     effective_date: string; // formato YYYY-MM-DD
+//   }> = {}
+// ): Promise<ProductPrice[]> {
+//   // Construye query params si hay filtros
+//   const params = new URLSearchParams();
+//   if (filters.productTypeId !== undefined) {
+//     params.append('productTypeId', String(filters.productTypeId));
+//   }
+//   if (filters.customerType) {
+//     params.append('customerType', filters.customerType);
+//   }
+//   if (filters.price !== undefined) {
+//     params.append('price', String(filters.price));
+//   }
+//   if (filters.effective_date) {
+//     params.append('effective_date', filters.effective_date);
+//   }
+
+//   return httpClient<ProductPrice[]>(
+//     `/product_prices/${params.toString() ? `?${params.toString()}` : ''}`,
+//     {
+//       headers: { Authorization: `Bearer ${token}` }
+//     }
+//   );
+// }
+
+// src/services/productPricesService.ts
+
 export async function getAllProductPrices(
   token: string,
   filters: Partial<{
@@ -52,13 +86,21 @@ export async function getAllProductPrices(
     params.append('effective_date', filters.effective_date);
   }
 
-  return httpClient<ProductPrice[]>(
+  // Llamada al backend
+  const data = await httpClient<ProductPrice[]>(
     `/product_prices/${params.toString() ? `?${params.toString()}` : ''}`,
     {
       headers: { Authorization: `Bearer ${token}` }
     }
   );
+
+  // Ordena por id ascendente antes de devolver
+  return data.sort((a, b) => a.id - b.id);
 }
+
+
+
+
 
 /**
  * Crea un nuevo precio de producto (solo ADMIN)

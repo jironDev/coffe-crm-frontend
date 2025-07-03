@@ -534,7 +534,7 @@ const Products: React.FC = () => {
                                         // Ajustar endDateObj a medianoche si se desea comparar solo fecha:
                                         endDateObj.setHours(0, 0, 0, 0);
                                         // Según tu condición: si endDate >= today, aplicar 'text-danger', si no, '', pero ajústalo a tu lógica:
-                                        const endDateClass = endDateObj >= today ? 'text-danger' : '';
+                                        const endDateClass = endDateObj <= today ? 'text-danger' : '';
 
 
                                         return (

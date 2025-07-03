@@ -7,6 +7,7 @@ import {
   createSale,
   updateSaleProduct
 } from "../services/customerProductService";
+import { getProductById } from "../services/productService";
 
 import type {  OrderLineDetail } from "../services/customerProductService";
 import SaveIcon from "@mui/icons-material/Save";
@@ -34,6 +35,8 @@ const SaleForm: React.FC = () => {
   const [assignedAt, setAssignedAt]       = useState<string>(state?.line ? state.line.assignedAt.substring(0, 10) : "");
   const [finalUser1, setFinalUser1]       = useState<string>(state?.line ? (state.line.finalUser1 ?? "") : "");
   const [assignedSlots, setAssignedSlots] = useState<number>(state?.line ? state.line.assignedSlots : 1);
+
+  const [slotsDisabled, setSlotsDisabled] = useState<boolean>(false);
 
   
   const [notes, setNotes] = useState<string>("");
@@ -116,6 +119,32 @@ const SaleForm: React.FC = () => {
     }
   };
 
+
+
+   // Detectar cambios en priceType o productId y auto‐asignar slots si hace falta
+   useEffect(() => {
+     if (
+       !isEdit &&
+       (priceType === "completa_directo" || priceType === "completa_revendedor") &&
+       productId > 0
+     ) {
+      setSlotsDisabled(true);
+       getProductById(token!, productId)
+         .then((product) => {
+           // defaultCapacity proviene de tu API
+           setAssignedSlots(product.productType.defaultCapacity);
+         })
+         .catch((err) => {
+           console.error("No se pudo obtener el producto:", err);
+          setSlotsDisabled(false);
+         });
+     } else {
+      setSlotsDisabled(false);
+     }
+   }, [priceType, productId, isEdit, token]);
+
+
+
   return (
     <div className="container mt-4 ">
       <h2 className="mb-5">{isEdit ? "Cambiar producto de la Venta" : "Nueva Venta"}</h2>
@@ -124,15 +153,7 @@ const SaleForm: React.FC = () => {
         {/*** Cargamos algunos campos en read-only o hidden si es edición ***/}
         {isEdit && state.line && (
           <>
-            {/* <div className="mb-3">
-              <label className="form-label">Id del Producto actual</label>
-              <input
-                type="text"
-                className="form-control"
-                value={state.line.id}
-                readOnly
-              />
-            </div> */}
+
             <div className="mb-3">
               <label className="form-label">Cliente</label>
               <input
@@ -236,17 +257,6 @@ const SaleForm: React.FC = () => {
               </select>
             </div>
 
-            {/* <div className="mb-3">
-              <label className="form-label">Total de Días</label>
-              <input
-                type="number"
-                className="form-control"
-                value={totalDays}
-                onChange={(e) => setTotalDays(Number(e.target.value))}
-                required
-                min={1}
-              />
-            </div> */}
 
 
             <div className="mb-3">
@@ -300,7 +310,16 @@ const SaleForm: React.FC = () => {
                 onChange={(e) => setAssignedSlots(Number(e.target.value))}
                 required
                 min={1}
+
+                disabled={slotsDisabled}
               />
+
+               {slotsDisabled && (
+         <small className="text-muted">
+           Slots ajustados automáticamente para este tipo de precio.
+         </small>
+       )}
+    
             </div>
 
             <div className="mb-3">

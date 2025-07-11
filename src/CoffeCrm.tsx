@@ -94,6 +94,7 @@ import CustomerDetail from './pages/CustomerDetail';
 import NotFound from './pages/NotFound';
 import Balances from './pages/Balances';
 import BalancesByOrder from './pages/BalancesByOrder';
+import DealerReport from './pages/Reportes/DealerReport';
 
 const HomeRedirect: React.FC = () => {
   const { token } = useAuth();
@@ -139,8 +140,12 @@ export const CoffeCrm: React.FC = () => {
 
               <Route path="/balances" element={<Balances />} />
             <Route path="/balances/:id" element={<BalancesByOrder />} />
+
+            <Route path="/reports/dealer" element={<DealerReport />} />
             </Route>
           </Route>
+
+
 
           <Route path="*" element={<NotFound />} />
         </Routes>

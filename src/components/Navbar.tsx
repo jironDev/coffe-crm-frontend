@@ -172,6 +172,9 @@ export const Navbar: React.FC = () => {
     { to: '/balances', label: 'Cobranza', icon: MonetizationOnIcon },
     { to: '/suppliers', label: 'Proveedores', icon: LocalShippingIcon },
     { to: '/product-prices', label: 'Precios', icon: PriceCheckIcon },
+
+    { to: '/reports/dealer',      label: 'Revendedores',        icon: PeopleIcon },
+
     ...(role === 'ADMIN' ? [
       { to: '/workers', label: 'Trabajadores', icon: WorkIcon },
       { to: '/admin/exchange-rates', label: 'Tasas', icon: CurrencyExchangeIcon },

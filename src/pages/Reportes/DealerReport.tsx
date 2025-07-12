@@ -144,6 +144,7 @@ import { useState, useMemo } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { getDealerReport, DealerReportRow } from '../../services/reportService'
 import { productTypeNames, productTypeValues } from '../../components/productTypeNames'
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const DealerReport: React.FC = () => {
   const { token } = useAuth()
@@ -151,13 +152,6 @@ const DealerReport: React.FC = () => {
   const [rows, setRows] = useState<DealerReportRow[]>([])
   const [error, setError] = useState<string|null>(null)
 
-  // Mapa de valor limpio -> orden (según productTypeValues keys)
-//   const productTypeOrder = useMemo(() => {
-//     return Object.entries(productTypeValues).reduce<Record<string, number>>((acc, [id, val]) => {
-//       acc[val] = Number(id)
-//       return acc
-//     }, {})
-//   }, [])
 
 const productTypeOrder = useMemo(() => {
   return Object.entries(productTypeValues).reduce<Record<string, number>>((acc, [id, val]) => {
@@ -178,116 +172,6 @@ const productTypeOrder = useMemo(() => {
     }
   }
 
-//   // Ordenar filas según vencimiento, tipo de producto y fecha, pero dejando totales al final
-//   const sortedRows = useMemo(() => {
-//     return [...rows].sort((a, b) => {
-//       // Detectar totales (filas con productType null)
-//       const isTotalA = a.productType == null
-//       const isTotalB = b.productType == null
-//       if (isTotalA && !isTotalB) return 1
-//       if (!isTotalA && isTotalB) return -1
-
-//       // 1. Por grupo de vencimiento
-//       const groupA = (a as any).vencimiento_order ?? (a.vencimiento === 'Hasta el 15' ? 1 : 2)
-//       const groupB = (b as any).vencimiento_order ?? (b.vencimiento === 'Hasta el 15' ? 1 : 2)
-//       if (groupA !== groupB) return groupA - groupB
-
-//      // 3) Por tipo de producto (según productTypeOrder)
-//      const prodA = a.productType != null
-//        ? productTypeOrder[a.productType] ?? Number.MAX_SAFE_INTEGER
-//       : Number.MAX_SAFE_INTEGER
-//      const prodB = b.productType != null
-//        ? productTypeOrder[b.productType] ?? Number.MAX_SAFE_INTEGER
-//        : Number.MAX_SAFE_INTEGER
-//      if (prodA !== prodB) return prodA - prodB
- 
-
-//     //   // 3. Por fecha de asignación
-//     //   const dateA = a.assignedAt ? new Date(a.assignedAt).getDate() : 0;
-//     // const dateB = b.assignedAt ? new Date(b.assignedAt).getDate() : 0;
-//     // return dateA - dateB;
-
-//     return 0
-//     })
-//   }, [rows, productTypeOrder])
-
-
-
-
-
-// const sortedRows = useMemo(() => {
-//   // 1) Separamos filas “de detalle” (con productType) y “totales” (productType == null)
-//   const detailRows = rows.filter(r => r.productType != null)
-//   const totalRows  = rows.filter(r => r.productType == null)
-
-//   // 2) Dentro de las filas de detalle, separamos vencimiento 15 vs 30
-//   const grupo15 = detailRows.filter(r => r.vencimiento === 'Hasta el 15')
-//   const grupo30 = detailRows.filter(r => r.vencimiento !== 'Hasta el 15')
-
-//   // 3) Ordenamos **cada** grupo sólo por el tipo de producto
-//   //    (haciendo lookup en productTypeOrder)
-//   const ordenarPorProducto = (a: DealerReportRow, b: DealerReportRow) => {
-//     const pa = productTypeOrder[a.productType!]  ?? Number.MAX_SAFE_INTEGER
-//     const pb = productTypeOrder[b.productType!]  ?? Number.MAX_SAFE_INTEGER
-//     return pa - pb
-//   }
-
-//   grupo15.sort(ordenarPorProducto)
-//   grupo30.sort(ordenarPorProducto)
-
-//   // 4) Reconstruimos el array final: primero todos los “15”,
-//   //    luego los totales de 15, luego todos los “30”, luego los totales de 30.
-//   const total15 = totalRows.filter(r => r.vencimiento === 'Total hasta el 15')
-//   const total30 = totalRows.filter(r => r.vencimiento === 'Total hasta el 30')
-
-//   return [
-//     ...grupo15,
-//     ...total15,
-//     ...grupo30,
-//     ...total30,
-//   ]
-// }, [rows, productTypeOrder])
-
-
-
-
-
-
-
-// // ESTA FUNCIONA EXCELENTE
-
-// const sortedRows = useMemo(() => {
-//   // 2) Enriquecer cada fila con productTypeId garantizado
-//   const enriched = rows.map(r => {
-//     const raw = r.productType ? r.productType.toUpperCase().trim() : ''
-//     const id  = productTypeOrder[raw] ?? Number.MAX_SAFE_INTEGER
-//     return { ...r, productTypeId: id }
-//   })
-
-//   // 3) Separar detalle vs totales
-//   const detailRows = enriched.filter(r => r.productType !== null)
-//   const totalRows  = enriched.filter(r => r.productType === null)
-
-//   // 4) Dentro de detalle: grupos de vencimiento
-//   const grupo15 = detailRows.filter(r => r.vencimiento === 'Hasta el 15')
-//   const grupo30 = detailRows.filter(r => r.vencimiento !== 'Hasta el 15')
-
-//   // 5) Ordenar **sólo** por productTypeId
-//   grupo15.sort((a, b) => a.productTypeId - b.productTypeId)
-//   grupo30.sort((a, b) => a.productTypeId - b.productTypeId)
-
-//   // 6) Totales de cada grupo
-//   const total15 = totalRows.filter(r => r.vencimiento === 'Total hasta el 15')
-//   const total30 = totalRows.filter(r => r.vencimiento === 'Total hasta el 30')
-
-//   // 7) Armar el array final
-//   return [
-//     ...grupo15,
-//     ...total15,
-//     ...grupo30,
-//     ...total30,
-//   ]
-// }, [rows, productTypeOrder])
 
 
 const sortedRows = useMemo(() => {
@@ -342,12 +226,6 @@ const sortedRows = useMemo(() => {
 
 
 
-
-
-
-
-
-
     // Función para obtener el nombre y emoji del tipo de producto
   const getProductTypeName = (productType: string | null): string => {
     if (!productType) return ''; // Maneja el caso de null
@@ -360,15 +238,18 @@ const sortedRows = useMemo(() => {
      const productTypeId = Object.keys(productTypeValues).find(key => productTypeValues[Number(key)].toLowerCase() === productType);
     
     // Si se encuentra el ID, obtener el nombre y emoji
-    return productTypeId ? productTypeNames[Number(productTypeId)] : productType; // Devuelve el texto original si no se encuentra
+    return productTypeId ? productTypeNames[Number(productTypeId)] : productType; 
   }
 
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Reporte de Revendedor</h1>
+      <h1 className="mb-3"><HowToRegIcon fontSize="large"/> Reporte de Revendedor</h1>
+<div className="mb-5"></div>
+
       <form className="row g-2 mb-4" onSubmit={handleSubmit}>
-        <div className="col-md-4">
+        <div className="col-md-12">          
+
           <input
             type="number"
             className="form-control"
@@ -378,15 +259,15 @@ const sortedRows = useMemo(() => {
             required
           />
         </div>
-        <div className="col-md-2">
+        <div className="col-md-12">
           <button type="submit" className="btn btn-primary w-100">Buscar</button>
         </div>
       </form>
       {error && <div className="alert alert-danger">{error}</div>}
       {sortedRows.length > 0 && (
-        <div className="table-responsive">
+        <div className="table-responsive shadow rounded">
           <table className="table table-hover small">
-            <thead className="table-active">
+            <thead className="table-active small">
               <tr>
                 <th>Cliente</th>
                 <th>Usuario</th>
@@ -397,12 +278,20 @@ const sortedRows = useMemo(() => {
                 <th>Precio</th>
               </tr>
             </thead>
+
             <tbody>
               {sortedRows.map((r, i) => (
-                <tr key={i}>
-                  <td>{r.customerId}: {r.firstName} {r.lastName}</td>
+                
+                 <tr key={i} className={(r.productType == null || r.vencimiento.startsWith('Total'))
+                    ? 'table-dark fw-bold opacity-50 text-uppercase' : ''}
+                  >
+
+                  <td > { (r.productType == null || r.vencimiento.startsWith('Total'))
+                    ? '' : `${r.customerId}: ${r.firstName} ${r.lastName}`}
+                  </td>
+
                   <td>{r.username}</td>
-             <td>{getProductTypeName(r.productType)}</td> 
+                  <td>{getProductTypeName(r.productType)}</td> 
                   <td>{r.priceType}</td>
                   <td>{r.assignedAt ? r.assignedAt.slice(0, 10) : '—'}</td>
                   <td>{r.vencimiento}</td>

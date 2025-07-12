@@ -144,6 +144,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 import './Navbar.css'; // Importar reglas de hover y margen
 
@@ -173,7 +174,7 @@ export const Navbar: React.FC = () => {
     { to: '/suppliers', label: 'Proveedores', icon: LocalShippingIcon },
     { to: '/product-prices', label: 'Precios', icon: PriceCheckIcon },
 
-    { to: '/reports/dealer',      label: 'Revendedores',        icon: PeopleIcon },
+    { to: '/reports/dealer',      label: 'Revendedores',        icon: HowToRegIcon },
 
     ...(role === 'ADMIN' ? [
       { to: '/workers', label: 'Trabajadores', icon: WorkIcon },

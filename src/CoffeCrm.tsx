@@ -137,6 +137,7 @@ export const CoffeCrm: React.FC = () => {
               <Route path="sales" element={<Sales />} />
               <Route path="sales/new" element={<SaleForm />} />
               <Route path="sales/edit/:id" element={<SaleForm />} />
+              <Route path="/renew-sale" element={<SaleForm />} />
 
               <Route path="/balances" element={<Balances />} />
             <Route path="/balances/:id" element={<BalancesByOrder />} />

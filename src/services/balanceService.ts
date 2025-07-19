@@ -24,6 +24,19 @@ export interface CustomerProductInfo {
   customer: CustomerInfo;
   product: ProductInfo;
   totalDays: number; 
+
+//esto es nuevo
+priceType: 
+    | 'perfil_directo'
+    | 'completa_directo'
+    | 'combo_directo'
+    | 'completa_revendedor'
+    | 'perfil_revendedor';
+  finalUser1?: string;
+  assignedSlots: number;
+
+
+
 }
 
 export interface BalanceRecord {

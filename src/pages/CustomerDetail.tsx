@@ -11,6 +11,8 @@ import type { OrderDetail, OrderLineDetail } from '../services/customerProductSe
 import { productTypeNames } from '../components/productTypeNames';
 import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
 
 // ---------- Helper para formatear fechas ISO sin desfase ----------
 function formatDate(isoString: string) {
@@ -95,33 +97,50 @@ const CustomerDetail: React.FC = () => {
         {/*  Card de Perfil del Cliente (30% de ancho aprox)        */}
         {/* --------------------------------------------------------- */}
         <div className="col-md-4">
-          <div className="card mb-4 shadow-sm">
-            <div className="card-header">
-              <h5 className="card-title mb-0 text-center ">
-                Id-Cliente: {customer.id}
-              </h5>
+          <div className="card mb-4 shadow card-rounded text-start">
+            <div className="card-header bg-indigo">
+              <small className="card-title mb-0 text-light text-start fw-bold opacity-75">
+                ID-CLIENTE: {customer.id}
+              </small>
             </div>
             <div className="card-body">
-              <p><strong>Nombre:</strong> {customer.firstName} {customer.lastName}</p>
-              <p><strong>Celular:</strong> {customer.phone}</p>
-              <p><strong>Tipo:</strong> {customer.customerType}</p>
-              <p><strong>Dirección:</strong> {customer.address ?? '—'}</p>
-              <p><strong>Contacto 1:</strong> {customer.contacto1 ?? '—'}</p>
-              <p><strong>Contacto 2:</strong> {customer.contacto2 ?? '—'}</p>
-              <p><strong>Creado:</strong> {formatDate(customer.createdAt)}</p>
+              
+              <h3 className='text-center py-2 mb-2 fw-bold text-white'>{customer.firstName} {customer.lastName}</h3>
+
+                <ul className="list-group list-group-flush">
+    <li className="list-group-item mt-2"><span><strong>Celular:</strong> {customer.phone}</span></li>
+    <li className="list-group-item"><span><strong>Tipo:</strong> {customer.customerType}</span></li>
+    <li className="list-group-item"><span><strong>Dirección:</strong> {customer.address ?? '—'}</span></li>
+    <li className="list-group-item"><span><strong>Contacto 1:</strong> {customer.contacto1 ?? '—'}</span></li>
+    <li className="list-group-item"><span><strong>Contacto 2:</strong> {customer.contacto2 ?? '—'}</span></li>
+    <small className='text-end mt-2 text-secondary'>{formatDate(customer.createdAt)}</small>
+  </ul>
+
+
             </div>
-            <div className="card-footer text-end">
+
+
+            
+            <div className="card-footer text-end ">
+
+              <div className="row g-2">
+
+
+              <div className="col-6">
               <button
-                className="btn btn-sm btn-outline-secondary me-2"
+                className="btn btn-sm btn-outline-secondary w-100 border-0"
                 onClick={() => navigate(`/customers/edit/${customer.id}`)}
                 title="Editar Cliente"
                 disabled={role !== 'ADMIN'}
               >
-                Editar
+                <EditIcon/>
               </button>
+              </div>
+
+              <div className="col-6">
 
 <button
-  className="btn btn-sm btn-outline-danger"
+  className="btn btn-sm btn-outline-danger w-100 border-0"
   onClick={async () => {
     if (role !== 'ADMIN') return;
     if (!window.confirm('¿Eliminar este cliente?')) return;
@@ -138,8 +157,15 @@ const CustomerDetail: React.FC = () => {
   disabled={role !== 'ADMIN'}
   title={role !== 'ADMIN' ? 'Solo administradores' : 'Eliminar Cliente'}
 >
-  Eliminar
+  <DeleteOutlineIcon/>
 </button>
+
+</div>
+
+
+</div>
+
+
 
             </div>
           </div>
@@ -148,6 +174,9 @@ const CustomerDetail: React.FC = () => {
         {/* --------------------------------------------------------- */}
         {/*  Sección de Actividades / Órdenes (70% de ancho aprox)    */}
         {/* --------------------------------------------------------- */}
+
+        
+
         <div className="col-md-8">
           <h4 className='text-center'>Compras</h4>
 

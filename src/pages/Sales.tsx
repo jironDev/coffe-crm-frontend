@@ -184,7 +184,7 @@ const Sales: React.FC = () => {
           <button
             type="button"
             className="btn btn-success rounded col-md-2"
-            onClick={() => window.open('/sales/new', '_blank')}
+            onClick={() => navigate('/sales/new')}
           >
             + Nueva Venta
           </button>

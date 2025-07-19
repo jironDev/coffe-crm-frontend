@@ -169,8 +169,10 @@ import Box from '@mui/material/Box';
 
 // Importamos los helpers de fecha
 import { formatDate, calcRemainingDays, calcExpiredDays, calcStatus } from '../components/CalcDays';
+import { useNavigate } from 'react-router-dom';
 
 const BalancesByOrder: React.FC = () => {
+   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const orderId = parseInt(id || '', 10);
   const { token } = useAuth();
@@ -178,25 +180,7 @@ const BalancesByOrder: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   if (!token || isNaN(orderId)) return;
-  //   const fetch = async () => {
-  //     setLoading(true);
-  //     setError(null);
-  //     try {
-  //       const data = await getBalancesByOrderId(token, orderId);
-  //       setBalances(data);
-  //     } catch (err: any) {
-  //       console.error('Error fetching balances by order:', err);
-  //       setError(err.message || 'Error al obtener balances de la orden');
-  //       setBalances([]);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetch();
-  // }, [token, orderId]);
-
+ 
 
 // Extraer la lógica de fetch en una función para poder llamarla tras desactivar
   const fetchBalances = useCallback(async () => {
@@ -226,10 +210,6 @@ const BalancesByOrder: React.FC = () => {
       </div>
     );
   }
-
-
-
-
 
 
 
@@ -307,6 +287,36 @@ const BalancesByOrder: React.FC = () => {
     }
   };
 
+
+
+const handleRenew = (b: BalanceRecord) => {
+    const today = new Date().toISOString().substring(0, 10); // "YYYY-MM-DD"
+
+    // Creamos un objeto muy parecido a OrderLineDetail,
+    // pero con un flag `renew: true`
+    const prefill = {
+      originalCpId: b.customerProduct.id,
+      customer: {
+        id: b.customerProduct.customer.id,
+        firstName: b.customerProduct.customer.firstName,
+        lastName: b.customerProduct.customer.lastName,
+        phone: b.customerProduct.customer.phone,
+      },
+      product: {
+        id: b.customerProduct.product.id,
+        username: b.customerProduct.product.username,
+        productTypeId: (b.customerProduct as any).product.productTypeId,
+      },
+      priceType: b.customerProduct.priceType,
+      totalDays: b.customerProduct.totalDays,
+      assignedAt: today,
+      finalUser1: b.customerProduct.finalUser1 ?? undefined,
+      assignedSlots: b.customerProduct.assignedSlots,
+      renew: true as const
+    };
+
+    navigate('/renew-sale', { state: { prefill } });
+  };
 
 
 
@@ -436,14 +446,25 @@ const BalancesByOrder: React.FC = () => {
 
                                  {/* Botón de Desactivar si está activo y, por ejemplo, vencido: */}
                       {isActive && statusDyn === 'Vencido' && (
+                        <>
                         <button
-                          className="btn btn-sm btn-outline-warning mt-2"
+                          className="btn btn-sm btn-outline-danger mt-2 me-2"
                           onClick={() =>
                             handleDeactivate(b.customerProduct.id)
                           }
                         >
                           Desactivar
                         </button>
+
+                        <button
+                        className="btn btn-sm btn-outline-info mt-2 me-2"
+                      onClick={() => handleRenew(b)}>
+                         Renovar
+                      </button>
+                      </>     
+
+
+
                       )}
                     </div>
                   </li>

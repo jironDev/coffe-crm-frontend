@@ -95,6 +95,10 @@ import NotFound from './pages/NotFound';
 import Balances from './pages/Balances';
 import BalancesByOrder from './pages/BalancesByOrder';
 import DealerReport from './pages/Reportes/DealerReport';
+import SupplierDebtReport from './pages/Reportes/SupplierDebtReport';
+import PurchaseReportPage from './pages/Reportes/PurchaseReportPage';
+import SalesReportPage from './pages/Reportes/SalesReportPage';
+import AuditLogs from './pages/Reportes/AuditLogs';
 
 const HomeRedirect: React.FC = () => {
   const { token } = useAuth();
@@ -143,6 +147,10 @@ export const CoffeCrm: React.FC = () => {
             <Route path="/balances/:id" element={<BalancesByOrder />} />
 
             <Route path="/reports/dealer" element={<DealerReport />} />
+            <Route path="/reports/supplier-debt" element={<SupplierDebtReport />} />
+            <Route path="/reports/purchases" element={<PurchaseReportPage />} />
+            <Route path="/reports/sales" element={<SalesReportPage />} />
+            <Route path="/audit-logs" element={<AuditLogs />} />
             </Route>
           </Route>
 

@@ -175,10 +175,14 @@ export const Navbar: React.FC = () => {
     { to: '/product-prices', label: 'Precios', icon: PriceCheckIcon },
 
     { to: '/reports/dealer',      label: 'Revendedores',        icon: HowToRegIcon },
+     { to: '/reports/supplier-debt',label: 'Deuda Proveedores',    icon: LocalShippingIcon },
+      { to: '/reports/purchases',    label: 'Reporte Compras',      icon: MonetizationOnIcon },
+      { to: '/reports/sales',        label: 'Reporte Ventas',       icon: AttachMoneyIcon },
 
     ...(role === 'ADMIN' ? [
       { to: '/workers', label: 'Trabajadores', icon: WorkIcon },
       { to: '/admin/exchange-rates', label: 'Tasas', icon: CurrencyExchangeIcon },
+      { to: '/audit-logs', label: 'Auditoria', icon: PeopleIcon },
     ] : []),
     { to: '#logout', label: 'Cerrar Sesión', icon: LogoutIcon, action: handleLogout },
   ] : [

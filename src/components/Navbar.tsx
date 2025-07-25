@@ -167,7 +167,7 @@ export const Navbar: React.FC = () => {
 
   // Lista de enlaces con icono y posible acción
   const links = token ? [
-    { to: '/customers', label: 'Clientes', icon: PeopleIcon },
+    // { to: '/customers', label: 'Clientes', icon: PeopleIcon },
     { to: '/products', label: 'Productos', icon: CategoryIcon },
     { to: '/sales', label: 'Ventas', icon: AttachMoneyIcon },
     { to: '/balances', label: 'Cobranza', icon: MonetizationOnIcon },

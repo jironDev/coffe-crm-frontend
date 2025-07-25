@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { getSupplierDebtReport, SupplierDebtResponse } from '../../services/reportService'
 import { productTypeNames, productTypeValues } from '../../components/productTypeNames'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 const SupplierDebtReport: React.FC = () => {
   const { token } = useAuth()
@@ -29,10 +30,11 @@ const SupplierDebtReport: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Reporte de Deuda a Proveedores</h1>
+      <h1 className="mb-3"><LocalShippingIcon fontSize="large"/> Deuda a Proveedores</h1>
+       <div className="mb-5"></div>
 
       <form className="row g-2 mb-4" onSubmit={handleSubmit}>
-        <div className="col-md-3">
+        <div className="col-md-6">
           <input
             type="number"
             className="form-control"
@@ -42,7 +44,7 @@ const SupplierDebtReport: React.FC = () => {
             disabled={!!productTypeName}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-6">
           <select
             className="form-select"
             value={productTypeName}
@@ -61,7 +63,7 @@ const SupplierDebtReport: React.FC = () => {
             })}
           </select>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-12">
           <button type="submit" className="btn btn-primary w-100">Buscar</button>
         </div>
       </form>
@@ -70,10 +72,11 @@ const SupplierDebtReport: React.FC = () => {
 
       {data && (
         <>
-          <h5>Total a Pagar: C${data.totalToPay.toFixed(2)}</h5>
-          <div className="table-responsive">
+          <h5 className='text-teal fw-bold mb-3'>Total a Pagar: ${data.totalToPay.toFixed(2)}</h5>
+
+          <div className="table-responsive shadow rounded">
             <table className="table table-hover small">
-              <thead>
+              <thead className="table-dark table-active small">
                 <tr>
                   <th>Proveedor</th>
                   <th>Vencimiento</th>

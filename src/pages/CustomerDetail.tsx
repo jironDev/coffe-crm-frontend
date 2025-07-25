@@ -91,12 +91,12 @@ const CustomerDetail: React.FC = () => {
   });
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 ">
       <div className="row">
         {/* --------------------------------------------------------- */}
         {/*  Card de Perfil del Cliente (30% de ancho aprox)        */}
         {/* --------------------------------------------------------- */}
-        <div className="col-md-4">
+        <div className="col-md-4 py-4">
           <div className="card mb-4 shadow card-rounded text-start">
             <div className="card-header bg-indigo">
               <small className="card-title mb-0 text-light text-start fw-bold opacity-75">
@@ -108,11 +108,11 @@ const CustomerDetail: React.FC = () => {
               <h3 className='text-center py-2 mb-2 fw-bold text-white'>{customer.firstName} {customer.lastName}</h3>
 
                 <ul className="list-group list-group-flush">
-    <li className="list-group-item mt-2"><span><strong>Celular:</strong> {customer.phone}</span></li>
-    <li className="list-group-item"><span><strong>Tipo:</strong> {customer.customerType}</span></li>
-    <li className="list-group-item"><span><strong>Dirección:</strong> {customer.address ?? '—'}</span></li>
-    <li className="list-group-item"><span><strong>Contacto 1:</strong> {customer.contacto1 ?? '—'}</span></li>
-    <li className="list-group-item"><span><strong>Contacto 2:</strong> {customer.contacto2 ?? '—'}</span></li>
+    <li className="list-group-item mt-2"><span><strong>Celular: </strong> {customer.phone}</span></li>
+    <li className="list-group-item"><span><strong>Tipo: </strong> {customer.customerType}</span></li>
+    <li className="list-group-item"><span><strong>Dirección: </strong> {customer.address ?? '—'}</span></li>
+    <li className="list-group-item"><span><strong>Contacto 1: </strong> {customer.contacto1 ?? '—'}</span></li>
+    <li className="list-group-item"><span><strong>Contacto 2: </strong> {customer.contacto2 ?? '—'}</span></li>
     <small className='text-end mt-2 text-secondary'>{formatDate(customer.createdAt)}</small>
   </ul>
 
@@ -178,7 +178,7 @@ const CustomerDetail: React.FC = () => {
         
 
         <div className="col-md-8">
-          <h4 className='text-center'>Compras</h4>
+          <h4 className='text-center'>💸 Compras</h4>
 
           {sortedOrders.length === 0 ? (
             <div className="alert alert-info">No hay órdenes para este cliente.</div>

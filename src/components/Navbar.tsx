@@ -189,6 +189,10 @@ export const Navbar: React.FC = () => {
     { to: '/login', label: 'Login', icon: LoginIcon }
   ];
 
+
+
+  
+
   return (
     <>
       {/* Móvil/Tablet: AppBar + Drawer */}

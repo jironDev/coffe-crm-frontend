@@ -1,10 +1,10 @@
 // src/pages/AuditLogs.tsx
 import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
-
-
 import { getAllAuditLogs, deleteAuditLog, AuditLog, GetAuditLogsFilters } from '../../services/auditLogService'
-
+import JsonPreview from '../../components/JsonPreview'
+import PeopleIcon from '@mui/icons-material/People';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
 
@@ -16,7 +16,7 @@ const AuditLogs: React.FC = () => {
   const [startDate, setStartDate] = useState<string>(today)
   const [endDate, setEndDate]     = useState<string>(today)
   const [workerId, setWorkerId]   = useState<number|''>('')
-  const [productId, setProductId] = useState<number|''>('')
+  // const [productId, setProductId] = useState<number|''>('')
 
   const [logs, setLogs]   = useState<AuditLog[]>([])
   const [error, setError] = useState<string|null>(null)
@@ -30,7 +30,7 @@ const AuditLogs: React.FC = () => {
     const filters: GetAuditLogsFilters = {
       startDate, endDate,
       workerId: workerId === '' ? undefined : Number(workerId),
-      productId: productId === '' ? undefined : Number(productId)
+      // productId: productId === '' ? undefined : Number(productId)
     }
     try {
       const data = await getAllAuditLogs(token, filters)
@@ -68,11 +68,12 @@ const AuditLogs: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3">Logs de Auditoría</h1>
+      <h1 className="mb-3"><PeopleIcon fontSize='large'/> Logs de Auditoría</h1>
+      <div className="mb-5"></div>
 
       <form className="row g-2 mb-4" onSubmit={handleSearch}>
-        <div className="col-md-2">
-          <label className="form-label">Desde</label>
+        <div className="col-md-4">
+          
           <input
             type="date"
             className="form-control"
@@ -81,8 +82,8 @@ const AuditLogs: React.FC = () => {
             required
           />
         </div>
-        <div className="col-md-2">
-          <label className="form-label">Hasta</label>
+        <div className="col-md-4">
+          
           <input
             type="date"
             className="form-control"
@@ -91,16 +92,17 @@ const AuditLogs: React.FC = () => {
             required
           />
         </div>
-        <div className="col-md-2">
-          <label className="form-label">Worker ID</label>
+        <div className="col-md-4">
+         
           <input
             type="number"
             className="form-control"
+            placeholder="ID Trabajador"
             value={workerId}
             onChange={e => setWorkerId(e.target.value === '' ? '' : Number(e.target.value))}
           />
         </div>
-        <div className="col-md-2">
+        {/* <div className="col-md-2">
           <label className="form-label">Product ID</label>
           <input
             type="number"
@@ -108,8 +110,8 @@ const AuditLogs: React.FC = () => {
             value={productId}
             onChange={e => setProductId(e.target.value === '' ? '' : Number(e.target.value))}
           />
-        </div>
-        <div className="col-md-2 align-self-end">
+        </div> */}
+        <div className="col-md-12 align-self-end mb-3">
           <button type="submit" className="btn btn-primary w-100" disabled={loading}>
             {loading ? 'Cargando...' : 'Buscar'}
           </button>
@@ -119,39 +121,44 @@ const AuditLogs: React.FC = () => {
       {error && <div className="alert alert-danger">{error}</div>}
 
       {logs.length > 0 && (
-        <div className="table-responsive">
-          <table className="table table-hover small">
-            <thead className="table-active">
+        <div className="table-responsive shadow rounded">
+          <table className="table table-hover">
+            <thead className="table-dark table-active small">
               <tr>
-                <th>ID</th>
-                <th>Worker</th>
-                <th>Tabla</th>
+                {/* <th>ID</th> */}
+                <th className='text-center'>Worker</th>
+                <th className='text-center'>Tabla</th>
                 <th>Registro</th>
-                <th>Op.</th>
+                <th>Operación</th>
                 <th>Old Data</th>
                 <th>New Data</th>
                 <th>Fecha</th>
-                {role === 'ADMIN' && <th>Acciones</th>}
+                {role === 'ADMIN' && <th className='text-center'>Acciones</th>}
               </tr>
             </thead>
             <tbody>
               {logs.map(log => (
                 <tr key={log.id}>
-                  <td>{log.id}</td>
-                  <td>{log.workerId ?? '—'}</td>
-                  <td>{log.tableName}</td>
+                  {/* <td>{log.id}</td> */}
+                  <td className='text-center'>{log.workerId ?? '—'}</td>
+                  <td className='text-center'>{log.tableName}</td>
                   <td>{log.recordId ?? '—'}</td>
                   <td>{log.operation}</td>
-                  <td><pre className="small mb-0">{JSON.stringify(log.oldData, null, 2)}</pre></td>
-                  <td><pre className="small mb-0">{JSON.stringify(log.newData, null, 2)}</pre></td>
+                  {/* <td><pre className="small mb-0">{JSON.stringify(log.oldData, null, 2)}</pre></td> */}
+                  <td>{log.oldData != null ? <JsonPreview data={log.oldData} previewChars={1} /> : '—'}</td>
+
+
+                  {/* <td><pre className="small mb-0">{JSON.stringify(log.newData, null, 2)}</pre></td> */}
+                       <td> {log.newData != null ? <JsonPreview data={log.newData} previewChars={1} /> : '—'} </td>
+
                   <td>{formatDateTime(log.createdAt)}</td>
                   {role === 'ADMIN' && (
-                    <td>
+                    <td className='text-center'>
                       <button
-                        className="btn btn-sm btn-outline-danger"
+                        className="btn btn-sm btn-outline-danger border-0 text"
                         onClick={() => handleDelete(log.id)}
                       >
-                        Eliminar
+                        <DeleteOutlineIcon/>
                       </button>
                     </td>
                   )}

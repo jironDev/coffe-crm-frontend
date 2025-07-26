@@ -175,16 +175,16 @@ export const Navbar: React.FC = () => {
     { to: '/product-prices', label: 'Precios', icon: PriceCheckIcon },
 
     { to: '/reports/dealer',      label: 'Revendedores',        icon: HowToRegIcon },
-     { to: '/reports/supplier-debt',label: 'Deuda Proveedores',    icon: LocalShippingIcon },
+     { to: '/reports/supplier-debt',label: 'Deuda Proveedor',    icon: LocalShippingIcon },
       { to: '/reports/purchases',    label: 'Reporte Compras',      icon: MonetizationOnIcon },
       { to: '/reports/sales',        label: 'Reporte Ventas',       icon: AttachMoneyIcon },
 
     ...(role === 'ADMIN' ? [
-      { to: '/workers', label: 'Trabajadores', icon: WorkIcon },
+      { to: '/workers', label: 'Workers', icon: WorkIcon },
       { to: '/admin/exchange-rates', label: 'Tasas', icon: CurrencyExchangeIcon },
       { to: '/audit-logs', label: 'Auditoria', icon: PeopleIcon },
     ] : []),
-    { to: '#logout', label: 'Cerrar Sesión', icon: LogoutIcon, action: handleLogout },
+    { to: '#logout', label: 'Log out', icon: LogoutIcon, action: handleLogout },
   ] : [
     { to: '/login', label: 'Login', icon: LoginIcon }
   ];
@@ -333,7 +333,7 @@ export const Navbar: React.FC = () => {
   </nav>
 )} */}
 
-{isDesktop && (
+{/* {isDesktop && (
   <nav className="navbar navbar-expand-lg bg-dark py-1">
     <div className="container-fluid">
       <Link className="navbar-brand" to="/customers">
@@ -385,7 +385,53 @@ export const Navbar: React.FC = () => {
       </div>
     </div>
   </nav>
+)} */}
+
+
+ {/* DESKTOP: sidebar mini */}
+ {isDesktop && (
+  <Box className="sidebar">
+    {/* Logo fijo arriba */}
+    <Link to="/customers" className="sidebar-logo">
+      <img src={CoffeLogo} alt="Logo" width={35} style={{ borderRadius: '4px' }} />
+      <span className="sidebar-logo-text">COFFEE CRM</span>
+    </Link>
+
+    {/* Links y botones */}
+    {links.map((link, i) => {
+      const IconComp = link.icon;
+      const isSelected = link.to !== '#logout' && location.pathname === link.to;
+
+      // Si es acción (logout), renderiza un <button>
+      if (link.action) {
+        return (
+          <button
+            key={i}
+            className={`sidebar-item${isSelected ? ' selected' : ''}`}
+            onClick={link.action}
+            type="button"
+          >
+            <IconComp className="sidebar-icon" fontSize="small" />
+            <span className="sidebar-label">{link.label}</span>
+          </button>
+        );
+      }
+
+      // En otro caso, renderiza un <Link>
+      return (
+        <Link
+          key={i}
+          to={link.to}
+          className={`sidebar-item${isSelected ? ' selected' : ''}`}
+        >
+          <IconComp className="sidebar-icon" fontSize="small" />
+          <span className="sidebar-label">{link.label}</span>
+        </Link>
+      );
+    })}
+  </Box>
 )}
+
 
 
     </>

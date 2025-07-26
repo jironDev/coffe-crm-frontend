@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { getSupplierDebtReport, SupplierDebtResponse } from '../../services/reportService'
 import { productTypeNames, productTypeValues } from '../../components/productTypeNames'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
 const SupplierDebtReport: React.FC = () => {
   const { token } = useAuth()
@@ -30,7 +30,7 @@ const SupplierDebtReport: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3"><LocalShippingIcon fontSize="large"/> Deuda a Proveedores</h1>
+      <h1 className="mb-3"><CurrencyBitcoinIcon fontSize="large"/> Deuda a Proveedores</h1>
        <div className="mb-5"></div>
 
       <form className="row g-2 mb-4" onSubmit={handleSubmit}>

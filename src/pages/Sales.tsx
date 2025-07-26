@@ -23,7 +23,7 @@ import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 // import BlockIcon from '@mui/icons-material/Block';
 
 interface SearchFilters {
@@ -176,7 +176,7 @@ const Sales: React.FC = () => {
 
   return (
     <div className="container mt-4 ">
-      <h1 className="mb-3"><AttachMoneyIcon fontSize="large"/> Ventas</h1>
+      <h1 className="mb-3"><PointOfSaleIcon fontSize="large"/> Ventas</h1>
      <div className="mb-3"></div>
 
 

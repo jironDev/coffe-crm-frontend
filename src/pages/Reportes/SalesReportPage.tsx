@@ -1,7 +1,7 @@
 // src/pages/SalesReportPage.tsx
 import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
 
 // import {
@@ -36,7 +36,7 @@ const SalesReportPage: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3"><AttachMoneyIcon fontSize='large'/> Reporte de Ventas</h1>
+      <h1 className="mb-3"><QueryStatsIcon fontSize='large'/> Reporte de Ventas</h1>
       <div className="mb-5"></div>
 
       <form className="row g-2 mb-4" onSubmit={handleSubmit}>

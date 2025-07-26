@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext'
 
 import { getPurchaseReport } from '../../services/reportService'
 import { PurchaseReportResponse } from '../../services/reportService'
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 
 
@@ -36,7 +36,7 @@ const PurchaseReportPage: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="mb-3"><MonetizationOnIcon fontSize='large'/> Reporte de Compras</h1>
+      <h1 className="mb-3"><ShoppingBagIcon fontSize='large'/> Reporte de Compras</h1>
     <div className="mb-5"></div>
 
       <form className="row g-2 mb-4" onSubmit={handleSubmit}>

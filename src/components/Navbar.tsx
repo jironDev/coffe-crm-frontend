@@ -135,16 +135,19 @@ import { useTheme, useMediaQuery } from '@mui/material';
 
 // Iconos MUI
 import PeopleIcon from '@mui/icons-material/People';
-import CategoryIcon from '@mui/icons-material/Category';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+import SellIcon from '@mui/icons-material/Sell';
 import WorkIcon from '@mui/icons-material/Work';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 
 import './Navbar.css'; // Importar reglas de hover y margen
 
@@ -168,16 +171,16 @@ export const Navbar: React.FC = () => {
   // Lista de enlaces con icono y posible acción
   const links = token ? [
     // { to: '/customers', label: 'Clientes', icon: PeopleIcon },
-    { to: '/products', label: 'Productos', icon: CategoryIcon },
-    { to: '/sales', label: 'Ventas', icon: AttachMoneyIcon },
+    { to: '/products', label: 'Productos', icon: LiveTvIcon },
+    { to: '/sales', label: 'Ventas', icon: PointOfSaleIcon },
     { to: '/balances', label: 'Cobranza', icon: MonetizationOnIcon },
     { to: '/suppliers', label: 'Proveedores', icon: LocalShippingIcon },
-    { to: '/product-prices', label: 'Precios', icon: PriceCheckIcon },
+    { to: '/product-prices', label: 'Precios', icon: SellIcon },
 
-    { to: '/reports/dealer',      label: 'Revendedores',        icon: HowToRegIcon },
-     { to: '/reports/supplier-debt',label: 'Deuda Proveedor',    icon: LocalShippingIcon },
-      { to: '/reports/purchases',    label: 'Reporte Compras',      icon: MonetizationOnIcon },
-      { to: '/reports/sales',        label: 'Reporte Ventas',       icon: AttachMoneyIcon },
+    { to: '/reports/dealer',      label: 'Revendedores',        icon: SupportAgentIcon },
+     { to: '/reports/supplier-debt',label: 'Deuda Proveedor',    icon: CurrencyBitcoinIcon },
+      { to: '/reports/purchases',    label: 'Reporte Compras',      icon: ShoppingBagIcon },
+      { to: '/reports/sales',        label: 'Reporte Ventas',       icon: QueryStatsIcon },
 
     ...(role === 'ADMIN' ? [
       { to: '/workers', label: 'Workers', icon: WorkIcon },

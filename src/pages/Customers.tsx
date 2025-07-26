@@ -391,7 +391,7 @@ import {
 import type { Customer } from '../models/Customer';
 import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const Customers: React.FC = () => {
   const { token } = useAuth();
@@ -565,7 +565,7 @@ const Customers: React.FC = () => {
                           className="btn btn-outline-light border-0"
                           title="Ver detalles"
                         >
-                          <InfoOutlinedIcon fontSize="small"/>
+                          <AccountBoxIcon fontSize="small"/>
                         </a>
                       </td>
                     </tr>

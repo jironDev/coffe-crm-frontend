@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { productTypeNames } from '../components/productTypeNames';
-import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+import SellIcon from '@mui/icons-material/Sell';
 
 
 
@@ -79,7 +79,7 @@ const handleDelete = async (id: number) => {
 
   return (
     <div className="container mt-4">     
-        <h1><PriceCheckIcon fontSize="large"/> Precios</h1>
+        <h1><SellIcon fontSize="large"/> Precios</h1>
         <div className="mb-3"></div>
 
  <div className="text-end mb-3">

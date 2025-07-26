@@ -274,7 +274,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { productTypeNames } from '../components/productTypeNames';
 import CustomerListModal from '../components/CustomerListModal';
-import CategoryIcon from '@mui/icons-material/Category';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { productTypeValues } from '../components/productTypeNames';
 
 
@@ -359,7 +359,7 @@ const Products: React.FC = () => {
 
     return (
         <div className="container mt-4">
-            <h1 className="mb-3"><CategoryIcon fontSize="large"/> Productos</h1>
+            <h1 className="mb-3"><LiveTvIcon fontSize="large"/> Productos</h1>
             <div className="mb-3"></div>
 
             <div className="text-end mb-3">

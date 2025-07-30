@@ -72,7 +72,7 @@ const Suppliers: React.FC = () => {
            <button
           type="button"
           className="btn btn-success rounded col-md-2"
-          onClick={() => window.open('/suppliers/new', '_blank')}
+          onClick={() => navigate('/suppliers/new')}
         >
           + Nuevo Proveedor
         </button>

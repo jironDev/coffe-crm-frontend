@@ -366,7 +366,7 @@ const Products: React.FC = () => {
                 <button
                     type="button"
                     className="btn btn-success rounded col-md-2"
-                    onClick={() => window.open('/products/new', '_blank')}
+                    onClick={() => navigate('/products/new')}
                 >
                     + Nuevo Producto
                 </button>
@@ -424,7 +424,7 @@ const Products: React.FC = () => {
                     <input
                         type="number"
                         className="form-control"
-                        placeholder="Cap."
+                        placeholder="Slots"
                         value={capacity}
                         onChange={e => setCapacity(e.target.value)}
                     />

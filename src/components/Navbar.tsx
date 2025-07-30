@@ -397,7 +397,7 @@ export const Navbar: React.FC = () => {
     {/* Logo fijo arriba */}
     <Link to="/customers" className="sidebar-logo">
       <img src={CoffeLogo} alt="Logo" width={35} style={{ borderRadius: '4px' }} />
-      
+      <span className="sidebar-logo-text">COFFEE CRM</span>
     </Link>
     
 

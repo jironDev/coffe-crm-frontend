@@ -382,7 +382,7 @@
 
 
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
   getAllCustomers,
@@ -406,6 +406,8 @@ const Customers: React.FC = () => {
 
   // estado para saber si ya se hizo la búsqueda
   const [hasSearched, setHasSearched] = useState(false);
+
+    const navigate = useNavigate();
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -460,7 +462,7 @@ const Customers: React.FC = () => {
         <button
           type="button"
           className="btn btn-success rounded col-md-2"
-          onClick={() => window.open('/customers/new', '_blank')}
+          onClick={() => navigate('/customers/new')}
         >
           + Nuevo
         </button>

@@ -179,13 +179,15 @@ export const Navbar: React.FC = () => {
 
     { to: '/reports/dealer',      label: 'Revendedores',        icon: SupportAgentIcon },
      { to: '/reports/supplier-debt',label: 'Deuda Proveedor',    icon: CurrencyBitcoinIcon },
-      { to: '/reports/purchases',    label: 'Reporte Compras',      icon: ShoppingBagIcon },
-      { to: '/reports/sales',        label: 'Reporte Ventas',       icon: QueryStatsIcon },
+      // { to: '/reports/purchases',    label: 'Reporte Compras',      icon: ShoppingBagIcon },
+      // { to: '/reports/sales',        label: 'Reporte Ventas',       icon: QueryStatsIcon },
 
     ...(role === 'ADMIN' ? [
       { to: '/workers', label: 'Workers', icon: WorkIcon },
       { to: '/admin/exchange-rates', label: 'Tasas', icon: CurrencyExchangeIcon },
       { to: '/audit-logs', label: 'Auditoria', icon: PeopleIcon },
+       { to: '/reports/purchases',    label: 'Reporte Compras',      icon: ShoppingBagIcon },
+      { to: '/reports/sales',        label: 'Reporte Ventas',       icon: QueryStatsIcon },
     ] : []),
     { to: '#logout', label: 'Log out', icon: LogoutIcon, action: handleLogout },
   ] : [

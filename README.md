@@ -102,7 +102,7 @@ Coffee CRM incluye:
 ## 📄 Manual de uso
 El manual detallado del sistema con pantallas, flujos y explicaciones para el usuario está disponible aquí:
 ```
-📘 docs/MANUAL_USUARIO.pdf
+📘 [docs/MANUAL_USUARIO.pdf](https://drive.google.com/file/d/1CUxIL-jdjypzCTg78XAIFp7eTp7JEJzm/view?usp=drive_link)
 ```
 
 ## 📦 Endpoints de la API

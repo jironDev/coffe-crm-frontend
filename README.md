@@ -83,41 +83,51 @@ npm run dev
 ```
 
 
-##🖥️ Módulos del sistema
+## 🖥️ Módulos del sistema
 
 Coffee CRM incluye:
 
-Módulo	Funcionalidad principal
-Login	Autenticación de usuarios con tokens JWT
-Clientes	Alta, edición, eliminación (solo admin), historial de compras
-Productos	Gestión de cuentas digitales con slots disponibles dinámicos
-Ventas	Registro detallado, asignación de productos, historial y facturación
-Cobranza	Alertas por vencimiento, cálculo de saldo restante, renovación de servicios
-Proveedores	Registro y gestión de proveedores
-Precios	Tabla de precios dinámica vinculada a tasas de cambio
-Reportes	Informes de revendedores, deuda a proveedores y facturación agrupada automáticamente
+-Módulo	Funcionalidad principal
+-Login	Autenticación de usuarios con tokens JWT
+-Clientes	Alta, edición, eliminación (solo admin), historial de compras
+-Productos	Gestión de cuentas digitales con slots disponibles dinámicos
+-Ventas	Registro detallado, asignación de productos, historial y facturación
+-Cobranza	Alertas por vencimiento, cálculo de saldo restante, renovación de servicios
+-Proveedores	Registro y gestión de proveedores
+-Precios	Tabla de precios dinámica vinculada a tasas de cambio
+-Reportes	Informes de revendedores, deuda a proveedores y facturación agrupada automáticamente
 
-##📄 Manual de uso
+---
+
+## 📄 Manual de uso
 El manual detallado del sistema con pantallas, flujos y explicaciones para el usuario está disponible aquí:
 ```
 📘 docs/MANUAL_USUARIO.pdf
 ```
 
-##📦 Endpoints de la API
+## 📦 Endpoints de la API
 (Agregar un resumen aquí si deseas, o link a Swagger o Postman Collection)
 
-##📌 Estado del proyecto
+---
+
+##  📌 Estado del proyecto
 ✅ Proyecto en funcionamiento.
 🔒 Repositorio privado.
 📧 Contacta para acceso de solo lectura si eres reclutador.
 
-##👨‍💻 Autor
+---
+
+## 👨‍💻 Autor
 Desarrollado por Enmanuel Jiron
 📫 Correo: [enmanueljiron12@gmail.comm]
 🌐 LinkedIn (si deseas incluirlo)
 
-##📃 Licencia
+---
+
+## 📃 Licencia
 Uso interno. No autorizado para redistribución sin permiso del autor.
+
+---
 
 
 

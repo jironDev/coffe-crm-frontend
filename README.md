@@ -87,15 +87,15 @@ npm run dev
 
 Coffee CRM incluye:
 
--Módulo	Funcionalidad principal
--Login	Autenticación de usuarios con tokens JWT
--Clientes	Alta, edición, eliminación (solo admin), historial de compras
--Productos	Gestión de cuentas digitales con slots disponibles dinámicos
--Ventas	Registro detallado, asignación de productos, historial y facturación
--Cobranza	Alertas por vencimiento, cálculo de saldo restante, renovación de servicios
--Proveedores	Registro y gestión de proveedores
--Precios	Tabla de precios dinámica vinculada a tasas de cambio
--Reportes	Informes de revendedores, deuda a proveedores y facturación agrupada automáticamente
+-Módulo	Funcionalidad principal.
+-Login	Autenticación de usuarios con tokens JWT.
+-Clientes	Alta, edición, eliminación (solo admin), historial de compras.
+-Productos	Gestión de cuentas digitales con slots disponibles dinámicos.
+-Ventas	Registro detallado, asignación de productos, historial y facturación.
+-Cobranza	Alertas por vencimiento, cálculo de saldo restante, renovación de servicios.
+-Proveedores	Registro y gestión de proveedores.
+-Precios	Tabla de precios dinámica vinculada a tasas de cambio.
+-Reportes	Informes de revendedores, deuda a proveedores y facturación agrupada automáticamente.
 
 ---
 

@@ -106,7 +106,68 @@ El manual detallado del sistema con pantallas, flujos y explicaciones para el us
 
 
 ## 📦 Endpoints de la API
-(Agregar un resumen aquí si deseas, o link a Swagger o Postman Collection)
+
+**Login**
+
+GET https://crm-nicastream.onrender.com/auth/login
+
+
+**Workers**
+
+*createWorker*
+POST https://crm-nicastream.onrender.com/workers/
+
+*getAllWorkers*
+GET https://crm-nicastream.onrender.com/workers/
+
+*getWorkerById*
+GET https://crm-nicastream.onrender.com/workers/:id
+
+*updateWorker*
+PUT https://crm-nicastream.onrender.com/workers/:id
+
+*deleteWorker*
+DELETE https://crm-nicastream.onrender.com/workers
+
+
+**Customers**
+
+*getAllCustomers*
+GET https://crm-nicastream.onrender.com/customers/all-customers
+
+*getCustomerById*
+GET https://crm-nicastream.onrender.com/customers/get-customer/:id
+
+*createCustomer*
+POST https://crm-nicastream.onrender.com/customers/add-customer
+
+*updateCustomer*
+PUT https://crm-nicastream.onrender.com/customers/update-customer/:id
+
+*deleteCustomer*
+DELETE https://crm-nicastream.onrender.com/admin/delete-customer/:id
+
+
+**Suppliers**
+
+*getAllSuppliers*
+GET https://crm-nicastream.onrender.com/suppliers/
+
+*getSupplierById*
+GET https://crm-nicastream.onrender.com/suppliers/:id
+
+*createSupplier*
+POST https://crm-nicastream.onrender.com/suppliers/
+
+*updateSupplier*
+PUT https://crm-nicastream.onrender.com/suppliers/:id
+
+*deleteSupplier*
+DELETE https://crm-nicastream.onrender.com/suppliers/:id
+
+
+
+
 
 ---
 

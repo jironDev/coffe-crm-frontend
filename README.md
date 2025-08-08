@@ -108,62 +108,64 @@ El manual detallado del sistema con pantallas, flujos y explicaciones para el us
 ## 📦 Endpoints de la API
 
 **Login**
-
+```
 GET https://crm-nicastream.onrender.com/auth/login
-
+```
 
 **Workers**
-
-*createWorker*
+```
+createWorker
 POST https://crm-nicastream.onrender.com/workers/
 
-*getAllWorkers*
+getAllWorkers
 GET https://crm-nicastream.onrender.com/workers/
 
-*getWorkerById*
+getWorkerById
 GET https://crm-nicastream.onrender.com/workers/:id
 
-*updateWorker*
+updateWorker
 PUT https://crm-nicastream.onrender.com/workers/:id
 
-*deleteWorker*
+deleteWorker
 DELETE https://crm-nicastream.onrender.com/workers
-
+```
 
 **Customers**
-
-*getAllCustomers*
+```
+getAllCustomers
 GET https://crm-nicastream.onrender.com/customers/all-customers
 
-*getCustomerById*
+getCustomerById
 GET https://crm-nicastream.onrender.com/customers/get-customer/:id
 
-*createCustomer*
+createCustomer
 POST https://crm-nicastream.onrender.com/customers/add-customer
 
-*updateCustomer*
+updateCustomer
 PUT https://crm-nicastream.onrender.com/customers/update-customer/:id
 
-*deleteCustomer*
+deleteCustomer
 DELETE https://crm-nicastream.onrender.com/admin/delete-customer/:id
-
+```
 
 **Suppliers**
-
-*getAllSuppliers*
+```
+getAllSuppliers
 GET https://crm-nicastream.onrender.com/suppliers/
 
-*getSupplierById*
+getSupplierById
 GET https://crm-nicastream.onrender.com/suppliers/:id
 
-*createSupplier*
+createSupplier
 POST https://crm-nicastream.onrender.com/suppliers/
 
-*updateSupplier*
+updateSupplier
 PUT https://crm-nicastream.onrender.com/suppliers/:id
 
-*deleteSupplier*
+deleteSupplier
 DELETE https://crm-nicastream.onrender.com/suppliers/:id
+```
+
 
 
 

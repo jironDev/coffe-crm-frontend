@@ -166,10 +166,104 @@ deleteSupplier
 DELETE https://crm-nicastream.onrender.com/suppliers/:id
 ```
 
+**ExchangeRates**
+```
+getAllExchangeRates
+GET https://crm-nicastream.onrender.com/exchange_rates/
 
+createExchangeRate
+POST https://crm-nicastream.onrender.com/exchange_rates/
 
+deleteExchangeRate
+DELETE https://crm-nicastream.onrender.com/exchange_rates/:id
+```
 
+**Products**
+```
+getAllProducts
+GET https://crm-nicastream.onrender.com/products/all-products
 
+getProductById
+GET https://crm-nicastream.onrender.com/products/get-product/:id
+
+createProduct
+POST https://crm-nicastream.onrender.com/products/add-product
+
+updateProduct
+PUT https://crm-nicastream.onrender.com/products/update-product/:id
+
+deleteProduct
+DELETE https://crm-nicastream.onrender.com/admin/delete-product/:id
+```
+
+**ProductPrices**
+```
+getAllProductPrices
+GET https://crm-nicastream.onrender.com/product_prices/
+
+createProductPrice
+POST https://crm-nicastream.onrender.com/admin/product_prices/
+
+updateProductPrice
+PUT https://crm-nicastream.onrender.com/admin/product_prices/:id
+
+deleteProductPrice
+DELETE https://crm-nicastream.onrender.com/admin/product_prices/:id
+```
+
+**Sales**
+```
+getAllCustomerProducts
+GET https://crm-nicastream.onrender.com/customer_products/all-sales
+
+getCustomerOrderById
+GET https://crm-nicastream.onrender.com/customer_products/get-order/:id
+
+createCustomerProduct
+POST https://crm-nicastream.onrender.com/customer_products/add-sale
+
+updateCustomerProduct
+PUT https://crm-nicastream.onrender.com/customer_products/update-product/:id
+
+deactivateCustomerProduct
+PUT https://crm-nicastream.onrender.com/customer_products/deactivate/:id
+
+deleteCustomerOrderById
+DELETE https://crm-nicastream.onrender.com/admin/delete-order/:id
+```
+
+**Collection**
+```
+getAllBalances
+GET https://crm-nicastream.onrender.com/balances/
+
+getBalancesByOrderId
+GET https://crm-nicastream.onrender.com/balances/:id
+```
+
+**Reports**
+```
+getDealerReport
+GET https://crm-nicastream.onrender.com/reports/dealer-report
+
+getSupplierDebtReport
+GET https://crm-nicastream.onrender.com/reports/supplier-debt
+
+getSalesReport
+GET https://crm-nicastream.onrender.com/reports/sales-report
+
+getPurchaseReport
+GET https://crm-nicastream.onrender.com/reports/purchase-report
+```
+
+**AuditLog**
+```
+getAllAuditLogs
+GET https://crm-nicastream.onrender.com/audit_log/
+
+deleteAuditLog
+DELETE https://crm-nicastream.onrender.com/audit_log/:id
+```
 
 ---
 

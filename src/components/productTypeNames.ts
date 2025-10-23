@@ -14,7 +14,8 @@ export const productTypeNames: Record<number, string> = {
   12: 'VIX 🟧💃',
   13: 'VIKI_PASS_PLUS ☯️👯',
   14: 'FLUJO_TV 📺⚽',
-  15: 'CANVA 🧑‍🎨'
+  15: 'CANVA 🧑‍🎨',
+  // 17: 'CHAT_GPT ֎',
 };
 
 
@@ -33,7 +34,8 @@ export const productTypeValues: Record<number, string> = {
   12: 'VIX',
   13: 'VIKI_PASS_PLUS',
   14: 'FLUJO_TV',
-  15: 'CANVA'
+  15: 'CANVA',
+  // 17: 'CHAT_GPT'
 };
 
 export default productTypeNames;

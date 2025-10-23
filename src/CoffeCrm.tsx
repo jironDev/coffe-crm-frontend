@@ -99,6 +99,8 @@ import SupplierDebtReport from './pages/Reportes/SupplierDebtReport';
 import PurchaseReportPage from './pages/Reportes/PurchaseReportPage';
 import SalesReportPage from './pages/Reportes/SalesReportPage';
 import AuditLogs from './pages/Reportes/AuditLogs';
+import ProductTypes from "./pages/ProductType/ProductTypes";
+import ProductTypeForm from "./pages/ProductType/ProductTypeForm";
 
 const HomeRedirect: React.FC = () => {
   const { token } = useAuth();
@@ -124,6 +126,11 @@ export const CoffeCrm: React.FC = () => {
               <Route path="product-prices" element={<ProductPrices />} />
               <Route path="product-prices/new" element={<ProductPriceForm />} />
               <Route path="product-prices/edit/:id" element={<ProductPriceForm isEdit />} />
+
+              <Route path="/product-types" element={<ProductTypes />} />
+              <Route path="/product-types/new" element={<ProductTypeForm />} />
+              <Route path="/product-types/edit/:id" element={<ProductTypeForm isEdit />} />
+
 
               <Route path="suppliers" element={<Suppliers />} />
               <Route path="suppliers/new" element={<SupplierForm />} />
